@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alan Martin - Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      background: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --highlight-color: #00bfa6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    header {
+      background: #1f1f1f;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--highlight-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: var(--highlight-color);
+      font-size: 2.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: var(--highlight-color);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #40e0d0;
+    }
+
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    #about img {
+      width: 100%;
+      max-width: 250px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--highlight-color);
+      box-shadow: 0 0 12px var(--highlight-color);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    #about div {
+      flex: 1;
+      min-width: 300px;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #cfcfcf;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    #about h2 {
+      color: var(--highlight-color);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    #works {
+      margin: 3rem 0;
+    }
+
+    #works h2 {
+      color: var(--highlight-color);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #works h3 {
+      color: var(--highlight-color);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    /* Photo section styles for sliding from first HTML */
+    #photos {
+      margin: 3rem 0;
+    }
+
+    #photos h2 {
+      color: var(--highlight-color);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #photos .photos-section {
+      display: flex;
+      overflow-x: auto;
+      gap: 6px; /* small gap */
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.5rem;
+      margin: 0;
+
+      scrollbar-width: thin;
+      scrollbar-color: #004d40 transparent;
+    }
+
+    #photos .photos-section::-webkit-scrollbar {
+      height: 6px;
+      background: transparent;
+      border-radius: 5px;
+      display: block;
+    }
+
+    #photos .photos-section::-webkit-scrollbar-thumb {
+      background: #004d40;
+      border-radius: 5px;
+    }
+
+    #photos .work-item {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      cursor: pointer;
+      max-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      border-radius: 10px;
+      background: #1e1e1e;
+      box-shadow: 0 0 15px #004d40;
+      transition: box-shadow 0.3s ease;
+    }
+
+    #photos .work-item:hover {
+      box-shadow: 0 0 25px var(--highlight-color);
+    }
+
+    #photos img {
+      max-height: 250px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 0;
+      padding: 0;
+      display: block;
+      transition: transform 0.3s ease;
+      transform: scale(1);
+    }
+
+    #photos .work-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .horizontal-grid {
+      column-width: 380px;
+      column-gap: 1.8rem;
+      max-height: calc(3 * 220px + 2 * 1.8rem);
+      overflow-y: visible;
+    }
+
+    .horizontal-grid .work-item {
+      break-inside: avoid;
+      margin-bottom: 1.8rem;
+      max-width: 100%;
+    }
+
+    .horizontal-grid video {
+      width: 100%;
+      height: auto;
+      max-width: 380px;
+    }
+
+    .Vertical-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 0 auto;
+      justify-items: center;
+      max-width: 1100px;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 0 auto;
+    }
+
+    .photos-section .work-item {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .work-item {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #004d40;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-out;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .work-item:hover {
+      box-shadow: 0 0 25px var(--highlight-color);
+    }
+
+    .Vertical-grid .work-item video {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+    video {
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 10px 10px 0 0;
+      outline: none;
+      height: auto;
+    }
+
+    video.video-16-9 {
+      aspect-ratio: 16 / 9;
+      max-width: 350px;
+    }
+
+    video.video-4-3 {
+      aspect-ratio: 4 / 3;
+      max-width: 350px;
+    }
+
+    video.video-21-9 {
+      aspect-ratio: 21 / 9;
+      max-width: 350px;
+    }
+
+    video.video-9-16 {
+      aspect-ratio: 9 / 16;
+      max-width: 380px;
+    }
+
+    video.video-1-1 {
+      aspect-ratio: 1 / 1;
+      max-width: 380px;
+    }
+
+    video.video-custom {
+      max-width: 350px;
+    }
+
+    #contact {
+      text-align: center;
+      margin: 3rem 0 5rem 0;
+      color: #cfcfcf;
+    }
+
+    #contact h2 {
+      color: var(--highlight-color);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    #contact p {
+      font-size: 1.2rem;
+      margin: 0.4rem 0;
+    }
+
+    #contact a {
+      color: var(--highlight-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    #contact a:hover {
+      color: #40e0d0;
+    }
+
+    footer {
+      background: #1f1f1f;
+      color: #555;
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Alan Martin</h1>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#works">My Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <section id="about">
+    <img src="photo_2025-03-24_20-06-39.jpg" alt="Alan Martin Photo" />
+    <div>
+      <h2>About Me</h2>
+      <p>Hello! I am a freelance 3D artist, motion graphics, and VFX professional based in Kerala, India. I bring stories to life through creative visuals and animations.</p>
+      <p>I work primarily with Blender, After Effects, and DaVinci Resolve to produce engaging and professional content. Welcome to my portfolio.</p>
+    </div>
+  </section>
+
+  <section id="photos">
+    <h2>Photos</h2>
+    <div class="photos-section">
+      <div class="work-item">
+        <img src="garage sampl 2.png" alt="Project Image 1" />
+      </div>
+      <div class="work-item">
+        <img src="photo_2025-03-24_20-06-39.jpg" alt="Project Image 2" />
+      </div>
+      <div class="work-item">
+        <img src="flow.png" alt="Project Image 3" />
+      </div>
+      <div class="work-item">
+        <img src="flow.png" alt="Project Image 4" />
+      </div>
+  <div class="work-item">
+        <img src="garage sampl 2.png" alt="Project Image 1" />
+      </div>
+      <div class="work-item">
+        <img src="photo_2025-03-24_20-06-39.jpg" alt="Project Image 2" />
+      </div>
+
+    </div>
+  </section>
+
+  <section id="works">
+    <h2>My Work</h2>
+
+    <h3>Vertical Videos</h3>
+    <div class="Vertical-grid">
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="final main.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="final animation 1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="final animation 1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="final animation 1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <h3>Horizontal Videos</h3>
+    <div class="horizontal-grid">
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="title animation 1.1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="title animation 1.1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="title animation 1.1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="title animation 1.1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="work-item">
+        <video controls muted preload="metadata" playsinline>
+          <source src="title animation 1.1.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: martinalan586@gmail.com</p>
+    <p>Phone: +91 974621795</p>
+    <a href="https://www.instagram.com/syfics_exe/">instagram</a>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2025 Alan Martin. All rights reserved.
+</footer>
+
+<script>
+  const animatedElements = document.querySelectorAll('#about img, #about div, .work-item');
+  const observerOptions = { threshold: 0.1 };
+
+  function animateOnScroll(entries, observer) {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+  animatedElements.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('loadedmetadata', () => {
+      const ratio = video.videoWidth / video.videoHeight;
+      video.style.aspectRatio = `${video.videoWidth} / ${video.videoHeight}`;
+
+      if (Math.abs(ratio - 16/9) < 0.05) {
+        video.classList.add('video-16-9');
+      } else if (Math.abs(ratio - 9/16) < 0.05) {
+        video.classList.add('video-9-16');
+      } else if (Math.abs(ratio - 4/3) < 0.05) {
+        video.classList.add('video-4-3');
+      } else if (Math.abs(ratio - 1) < 0.05) {
+        video.classList.add('video-1-1');
+      } else if (Math.abs(ratio - 21/9) < 0.05) {
+        video.classList.add('video-21-9');
+      } else {
+        video.classList.add('video-custom');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
