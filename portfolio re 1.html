@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan Martin | Portfolio</title>
+    <style>
+        /* --- CORE THEME --- */
+        :root {
+            --bg-color: #0f0f11;
+            --text-color: #eeeeee;
+            --accent-color: #e50914; 
+            --card-bg: #1a1a1d;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 15, 17, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+            backdrop-filter: blur(10px); /* Premium frosted glass effect */
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+        .logo span { color: var(--accent-color); }
+        nav a { color: var(--text-color); text-decoration: none; margin-left: 2rem; transition: color 0.3s ease; font-size: 0.9rem; }
+        nav a:hover { color: var(--accent-color); }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .animate-on-scroll {
+            opacity: 0; 
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.show { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        /* --- HERO SECTION --- */
+        .profile-section { padding: 6rem 20px 3rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .profile-photo { 
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 3px solid var(--accent-color); 
+            margin-bottom: 1.5rem; 
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3); 
+        }
+        .profile-section h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin: 0; letter-spacing: -1px; }
+        .profile-section p { font-size: 1.2rem; color: #aaaaaa; margin-top: 0.5rem; }
+
+        /* --- SKILLS --- */
+        .skills-grid { display: flex; justify-content: center; gap: 1rem; padding: 2rem 10%; flex-wrap: wrap; }
+        .skill-tag { background-color: var(--card-bg); padding: 8px 20px; border-radius: 50px; border: 1px solid #333; font-size: 0.85rem; }
+
+        /* --- UNIFIED GRID SYSTEM --- */
+        .portfolio-section { padding: 5rem 10%; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* This is the magic fix for your alignment */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 per row */
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        /* Special grid for Reels (Vertical) */
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 per row for vertical */
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #222;
+        }
+
+        .grid-item:hover { 
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+        }
+
+        /* Media Handling */
+        .video-container { width: 100%; background: #000; line-height: 0; }
+        .drive-video-horizontal { width: 100%; aspect-ratio: 16 / 9; border: none; }
+        .drive-video-vertical { width: 100%; aspect-ratio: 9 / 16; border: none; }
+        .grid-item img { width: 100%; height: auto; display: block; }
+
+        .project-info { padding: 1.5rem; flex-grow: 1; }
+        .project-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: #fff; }
+        .project-info p { color: #888; font-size: 0.85rem; margin: 0; }
+
+        /* --- FOOTER --- */
+        .contact-section { padding: 5rem 10%; text-align: center; background: #111; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { background-color: #ff0b16; transform: translateY(-3px); }
+        footer { text-align: center; padding: 3rem; color: #555; font-size: 0.8rem; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1100px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .reels-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .portfolio-grid, .reels-grid { grid-template-columns: 1fr; }
+            nav { display: none; } /* Hide nav on mobile for simplicity */
+            .portfolio-section { padding: 3rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Alan<span>Martin</span></div>
+        <nav>
+            <a href="#widescreen">Project</a>
+            <a href="#reels">vertical</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="profile-section">
+        <img src="YOUR_IMAGE_URL" alt="Alan Martin" class="profile-photo animate-on-scroll">
+        <h1 class="animate-on-scroll">Alan Martin</h1>
+        <p class="animate-on-scroll">Video Editor & Motion Graphics Artist</p>
+        <div class="skills-grid">
+            <div class="skill-tag animate-on-scroll">After Effects</div>
+            <div class="skill-tag animate-on-scroll">Premiere Pro</div>
+            <div class="skill-tag animate-on-scroll">Motion Graphics</div>
+        </div>
+    </section>
+
+    <section id="widescreen" class="portfolio-section" style="background-color: #141416;">
+        <h2 class="section-title animate-on-scroll">Project</h2>
+        
+        <div class="portfolio-grid">
+            
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                </div>
+                <div class="project-info">
+                    <h3>Commercial Edit</h3>
+                    <p>High-energy sequence with custom transitions.</p>
+                </div>
+            </div>
+
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                </div>
+                <div class="project-info">
+                    <h3>Short Film</h3>
+                    <p>Cinematic color grading and pacing.</p>
+                </div>
+            </div>
+
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                </div>
+                <div class="project-info">
+                    <h3>Music Video</h3>
+                    <p>Beat-synced motion graphics and overlays.</p>
+                </div>
+            </div>
+
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                </div>
+                <div class="project-info">
+                    <h3>Next Row Project</h3>
+                    <p>This automatically starts the second row.</p>
+                </div>
+            </div>
+
+        </div> 
+    </section>
+
+    <section id="reels" class="portfolio-section">
+        <h2 class="section-title animate-on-scroll">Vertical videos & Photos</h2>
+        
+        <div class="reels-grid">
+            
+            <div class="grid-item animate-on-scroll">
+                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                <div class="project-info"><h3>Viral Reel 1</h3></div>
+            </div>
+
+            <div class="grid-item animate-on-scroll">
+                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                <div class="project-info"><h3>Viral Reel 2</h3></div>
+            </div>
+
+            <div class="grid-item animate-on-scroll">
+                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                <div class="project-info"><h3>Viral Reel 3</h3></div>
+            </div>
+
+            <div class="grid-item animate-on-scroll">
+                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/YOUR_ID/preview"></iframe>
+                <div class="project-info"><h3>Viral Reel 4</h3></div>
+            </div>
+
+        </div> 
+    </section>
+
+    <style>
+        /* New Styles for Contact Icons */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 3rem 0;
+        }
+        .social-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-link span {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .social-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-10px);
+        }
+        .social-link:hover i {
+            filter: drop-shadow(0 0 10px var(--accent-color));
+        }
+    </style>
+
+    <section id="contact" class="contact-section">
+        <h2 class="animate-on-scroll">Ready to start a project?</h2>
+        
+        <div class="contact-container">
+            <a href="martinalan586@gmail.com" class="social-link animate-on-scroll">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+
+            <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+        </div>
+
+        <a href="martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Alan Martin. Professional Video Editing Portfolio.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
