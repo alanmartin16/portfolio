@@ -278,10 +278,10 @@
         </div> 
     </section>
 
-    <section id="contact" class="contact-section">
+   <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll">Ready to start a project?</h2>
         <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
+            <a href="mailto:martinalan586@gmail.com" onclick="handleMailClick(event)" class="social-link animate-on-scroll">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
             </a>
@@ -290,7 +290,7 @@
                 <span>Instagram</span>
             </a>
         </div>
-        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
+        <a href="mailto:martinalan586@gmail.com" onclick="handleMailClick(event)" class="btn animate-on-scroll">Hire Me</a>
     </section>
 
     <footer>
@@ -298,7 +298,17 @@
     </footer>
 
     <script>
-        // Simple scroll reveal logic
+        function handleMailClick(e) {
+            const email = "martinalan586@gmail.com";
+            const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email;
+            let timeout = setTimeout(function() {
+                window.open(gmailUrl, '_blank');
+            }, 500);
+            window.onblur = function() {
+                clearTimeout(timeout);
+            };
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -307,7 +317,6 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
         });
     </script>
