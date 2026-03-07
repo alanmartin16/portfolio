@@ -71,7 +71,6 @@
         .portfolio-section { padding: 5rem 10%; }
         .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Fix for Stretching and Frame Out */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -99,12 +98,15 @@
             border-color: var(--accent-color);
         }
 
-        /* Magic Fix for Video Alignment */
+        /* FIX: Video Container & Iframe logic to remove black bars */
         .video-container { 
             width: 100%; 
             position: relative;
             background: #000; 
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .drive-video-horizontal { 
@@ -119,13 +121,16 @@
             aspect-ratio: 9 / 16; 
             border: none;
             display: block;
+            /* Zoom slightly and center to crop internal Google Drive black bars */
+            transform: scale(1.02); 
+            object-fit: cover;
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
         .project-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: #fff; }
         .project-info p { color: #888; font-size: 0.85rem; margin: 0; }
 
-        /* --- HORIZONTAL IMAGE GALLERY --- */
+        /* --- GALLERY --- */
         .gallery-wrapper {
             display: flex;
             overflow-x: auto;
@@ -134,11 +139,7 @@
             scrollbar-width: thin;
             scrollbar-color: var(--accent-color) #111;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
         }
-
-        .gallery-wrapper::-webkit-scrollbar { height: 6px; }
-        .gallery-wrapper::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
 
         .gallery-item {
             flex: 0 0 auto;
@@ -146,38 +147,19 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #333;
-            height: 450px; /* Base height */
+            height: 450px;
             background: #111;
         }
 
-        .gallery-item img {
-            height: 100%;
-            width: auto; /* Fit to custom ratio */
-            display: block;
-            object-fit: contain;
-        }
+        .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
 
-        /* --- CONTACT & FOOTER --- */
+        /* --- CONTACT --- */
         .contact-section { padding: 5rem 10%; text-align: center; background: #111; }
         .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; }
         .btn:hover { background-color: #ff0b16; transform: translateY(-3px); }
         
-        .contact-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 3rem 0;
-        }
-        .social-link {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 2.5rem;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
+        .contact-container { display: flex; justify-content: center; gap: 40px; margin: 3rem 0; }
+        .social-link { color: var(--text-color); text-decoration: none; font-size: 2.5rem; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .social-link:hover { color: var(--accent-color); transform: translateY(-5px); }
         .social-link span { font-size: 0.9rem; opacity: 0.7; text-transform: uppercase; }
 
@@ -226,37 +208,12 @@
     <section id="gallery" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Image Gallery</h2>
         <div class="gallery-wrapper animate-on-scroll">
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX" alt="Portfolio Image">
-            </div>
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr" alt="Portfolio Image">
-            </div>
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH" alt="Portfolio Image">
-            </div>
-             <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8" alt="Portfolio Image">
-            </div>
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2" alt="Portfolio Image">
-            </div>
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1ERYsPun9Sl8NDb4F8cmcoK0xw-B0JwO0" alt="Portfolio Image">
-            </div>
-             <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w" alt="Portfolio Image">
-            </div>
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n" alt="Portfolio Image">
-            </div>
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa" alt="Portfolio Image">
-            </div>
-             <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/u/0/d/14tsuZiw98b9OLDjervap0SS4CDodvVbQ" alt="Portfolio Image">
-            </div>
-            </div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX" alt="Portfolio Image"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr" alt="Portfolio Image"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH" alt="Portfolio Image"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8" alt="Portfolio Image"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2" alt="Portfolio Image"></div>
+        </div>
     </section>
 
     <section id="widescreen" class="portfolio-section" style="background-color: #141416;">
@@ -281,22 +238,34 @@
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
             <div class="grid-item animate-on-scroll">
-                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
+                <div class="video-container">
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
+                </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
+                <div class="video-container">
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
+                </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
+                <div class="video-container">
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
+                </div>
             </div>
-                        <div class="grid-item animate-on-scroll">
-                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
+                </div>
             </div>
-             <div class="grid-item animate-on-scroll">
-                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
+                </div>
             </div>
-             <div class="grid-item animate-on-scroll">
-                <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container">
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
+                </div>
             </div>
         </div> 
     </section>
@@ -321,18 +290,12 @@
     </footer>
 
     <script>
-        // SMART EMAIL REDIRECT LOGIC
         function handleMailClick(e) {
             const email = "martinalan586@gmail.com";
             const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email;
-            
-            // Set a timer. If the browser is still focused after 500ms, it means 
-            // no local mail app was triggered/opened.
             let timeout = setTimeout(function() {
                 window.open(gmailUrl, '_blank');
             }, 500);
-
-            // If the window loses focus, the mail app successfully opened.
             window.onblur = function() {
                 clearTimeout(timeout);
             };
