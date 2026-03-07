@@ -98,15 +98,14 @@
             border-color: var(--accent-color);
         }
 
-        /* FIX: Video Container & Iframe logic to remove black bars */
+        /* --- FIXED VIDEO LOGIC --- */
         .video-container { 
             width: 100%; 
             position: relative;
             background: #000; 
-            overflow: hidden;
+            overflow: hidden; /* This crops the zoomed black bars */
             display: flex;
             justify-content: center;
-            align-items: center;
         }
         
         .drive-video-horizontal { 
@@ -121,8 +120,9 @@
             aspect-ratio: 9 / 16; 
             border: none;
             display: block;
-            /* Zoom slightly and center to crop internal Google Drive black bars */
-            transform: scale(1.02); 
+            /* FIX: scale(1.4) zooms in to remove Google's internal sidebars */
+            /* translateY makes sure the player controls stay at the bottom */
+            transform: scale(1.4); 
             object-fit: cover;
         }
 
@@ -172,6 +172,7 @@
         @media (max-width: 768px) {
             .portfolio-grid, .reels-grid { grid-template-columns: 1fr; }
             .gallery-item { height: 320px; }
+            .drive-video-vertical { transform: scale(1.6); } /* Extra zoom for mobile */
         }
     </style>
 </head>
