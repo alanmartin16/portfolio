@@ -98,32 +98,40 @@
             border-color: var(--accent-color);
         }
 
-        /* --- FIXED VIDEO LOGIC --- */
+        /* --- CORRECTED VIDEO LOGIC --- */
         .video-container { 
             width: 100%; 
             position: relative;
             background: #000; 
-            overflow: hidden; /* This crops the zoomed black bars */
-            display: flex;
-            justify-content: center;
-        }
-        
-        .drive-video-horizontal { 
-            width: 100%; 
-            aspect-ratio: 16 / 9; 
-            border: none;
+            overflow: hidden;
             display: block;
         }
+
+        /* Container for Horizontal (16:9) */
+        .horizontal-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        /* Container for Vertical (9:16) */
+        .vertical-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 177.77%; /* 9:16 Aspect Ratio */
+        }
         
-        .drive-video-vertical { 
-            width: 100%; 
-            aspect-ratio: 9 / 16; 
+        /* The Actual Video Element */
+        .drive-video { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
             display: block;
-            /* FIX: scale(1.4) zooms in to remove Google's internal sidebars */
-            /* translateY makes sure the player controls stay at the bottom */
-            transform: scale(1.4); 
-            object-fit: cover;
+            /* This prevents stretching and fits the content correctly */
+            object-fit: contain; 
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
@@ -172,7 +180,6 @@
         @media (max-width: 768px) {
             .portfolio-grid, .reels-grid { grid-template-columns: 1fr; }
             .gallery-item { height: 320px; }
-            .drive-video-vertical { transform: scale(1.6); } /* Extra zoom for mobile */
         }
     </style>
 </head>
@@ -221,14 +228,14 @@
         <h2 class="section-title animate-on-scroll">Widescreen Projects</h2>
         <div class="portfolio-grid">
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/1WYHevBc39WNaMcOrR9MYr-BXAymscSJR/preview"></iframe>
+                <div class="video-container horizontal-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1WYHevBc39WNaMcOrR9MYr-BXAymscSJR/preview"></iframe>
                 </div>
                 <div class="project-info"><h3>motion graphics</h3><p>LED Wall Content</p></div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview"></iframe>
+                <div class="video-container horizontal-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview"></iframe>
                 </div>
                 <div class="project-info"><h3>motion graphics</h3><p>LED Wall Content</p></div>
             </div>
@@ -239,33 +246,33 @@
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
+                <div class="video-container vertical-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
+                <div class="video-container vertical-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
+                <div class="video-container vertical-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
+                <div class="video-container vertical-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
+                <div class="video-container vertical-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
-                <div class="video-container">
-                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
+                <div class="video-container vertical-wrapper">
+                    <iframe class="drive-video" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
                 </div>
             </div>
         </div> 
