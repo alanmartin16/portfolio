@@ -159,7 +159,7 @@
 
         /* --- CONTACT & FOOTER --- */
         .contact-section { padding: 5rem 10%; text-align: center; background: #111; }
-        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; }
         .btn:hover { background-color: #ff0b16; transform: translateY(-3px); }
         
         .contact-container {
@@ -301,10 +301,10 @@
         </div> 
     </section>
 
-<section id="contact" class="contact-section">
+    <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll">Ready to start a project?</h2>
         <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
+            <a href="mailto:martinalan586@gmail.com" onclick="handleMailClick(event)" class="social-link animate-on-scroll">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
             </a>
@@ -313,7 +313,7 @@
                 <span>Instagram</span>
             </a>
         </div>
-        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
+        <a href="mailto:martinalan586@gmail.com" onclick="handleMailClick(event)" class="btn animate-on-scroll">Hire Me</a>
     </section>
 
     <footer>
@@ -321,6 +321,23 @@
     </footer>
 
     <script>
+        // SMART EMAIL REDIRECT LOGIC
+        function handleMailClick(e) {
+            const email = "martinalan586@gmail.com";
+            const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email;
+            
+            // Set a timer. If the browser is still focused after 500ms, it means 
+            // no local mail app was triggered/opened.
+            let timeout = setTimeout(function() {
+                window.open(gmailUrl, '_blank');
+            }, 500);
+
+            // If the window loses focus, the mail app successfully opened.
+            window.onblur = function() {
+                clearTimeout(timeout);
+            };
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -334,10 +351,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
