@@ -98,25 +98,42 @@
             border-color: var(--accent-color);
         }
 
-        /* --- THE PERFECT FIT FIX --- */
+        /* --- THE FINAL VIDEO BOX FIX --- */
         .video-container { 
             width: 100%; 
             position: relative;
             background: #000; 
-            overflow: hidden;
+            overflow: hidden; 
         }
 
-        /* Fixed aspect ratios to stop stretching */
-        .horizontal-box { aspect-ratio: 16 / 9; }
-        .vertical-box { aspect-ratio: 9 / 16; }
-        
-        .drive-video { 
+        /* Fix for Horizontal Videos (16:9) */
+        .horizontal-box {
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Fix for Vertical Videos (9:16) */
+        .vertical-box {
+            aspect-ratio: 9 / 16;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* This centers the video and expands it to remove black bars without stretching */
+        .drive-video-vertical { 
+            position: absolute;
+            width: 178%; /* Expands to fill the 9:16 space from a 16:9 player */
+            height: 100%;
+            border: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Keeps it perfectly centered */
+        }
+
+        .drive-video-horizontal {
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
-            /* This fills the box perfectly without distortion or black bars */
-            object-fit: cover; 
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
@@ -214,13 +231,13 @@
         <div class="portfolio-grid">
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1WYHevBc39WNaMcOrR9MYr-BXAymscSJR/preview"></iframe>
+                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/1WYHevBc39WNaMcOrR9MYr-BXAymscSJR/preview"></iframe>
                 </div>
                 <div class="project-info"><h3>motion graphics</h3><p>LED Wall Content</p></div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview"></iframe>
+                    <iframe class="drive-video-horizontal" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview"></iframe>
                 </div>
                 <div class="project-info"><h3>motion graphics</h3><p>LED Wall Content</p></div>
             </div>
@@ -232,32 +249,32 @@
         <div class="reels-grid">
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
                 </div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
+                    <iframe class="drive-video-vertical" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
                 </div>
             </div>
         </div> 
