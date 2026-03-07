@@ -304,40 +304,37 @@
 <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll">Ready to start a project?</h2>
         <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" 
-               onclick="handleMailClick(event)" 
-               class="social-link animate-on-scroll">
+            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
             </a>
-            
             <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll">
                 <i class="fab fa-instagram"></i>
                 <span>Instagram</span>
             </a>
         </div>
-
-        <a href="mailto:martinalan586@gmail.com" 
-           onclick="handleMailClick(event)" 
-           class="btn animate-on-scroll">Hire Me</a>
+        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
     </section>
 
+    <footer>
+        <p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p>
+    </footer>
+
     <script>
-        function handleMailClick(e) {
-            // Check if user is on a mobile device
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            
-            if (!isMobile) {
-                // If on PC, prevent the default app from opening and force Gmail website
-                e.preventDefault();
-                const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=martinalan586@gmail.com";
-                window.open(gmailUrl, '_blank');
-            }
-            // If on Mobile, it will follow the default 'mailto:' and open their Mail App
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        });
     </script>
 </body>
 </html>
+
 
 
 
