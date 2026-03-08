@@ -79,10 +79,12 @@
             gap: 30px;
         }
 
+        /* FIXED REELS GRID */
         .reels-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            width: 100%;
         }
 
         .grid-item {
@@ -93,6 +95,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #222;
+            width: 100%; /* Ensures item fills the grid cell */
         }
 
         .grid-item:hover { 
@@ -108,17 +111,9 @@
             overflow: hidden; 
         }
 
-        /* 16:9 Aspect Ratio */
-        .horizontal-box {
-            aspect-ratio: 16 / 9;
-        }
+        .horizontal-box { aspect-ratio: 16 / 9; }
+        .vertical-box { aspect-ratio: 9 / 16; }
 
-        /* 9:16 Aspect Ratio */
-        .vertical-box {
-            aspect-ratio: 9 / 16;
-        }
-
-        /* Standardized iframe behavior to prevent "Zoom" or "Stretch" */
         .drive-video-player {
             position: absolute;
             top: 0;
@@ -274,7 +269,8 @@
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
                 </div>
-                 <div class="grid-item animate-on-scroll">
+            </div>
+            <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview"></iframe>
                 </div>
@@ -326,6 +322,3 @@
     </script>
 </body>
 </html>
-
-
-
