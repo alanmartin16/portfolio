@@ -6,18 +6,25 @@
     <title>Alan Martin | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- CORE THEME --- */
+        /* --- CINEMATIC GRADIENT THEME --- */
         :root {
-            --bg-color: #0f0f11;
-            --text-color: #eeeeee;
-            --accent-color: #e50914; 
-            --card-bg: #1a1a1d;
+            --bg-color: #05050a; 
+            --bg-glow: #1a1b3b;
+            --text-color: #ffffff;
+            --text-dim: #a0a0a0;
+            --accent-color: #8a99ff; 
+            --accent-gradient: linear-gradient(90deg, #8a99ff, #d199ff);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         body {
             margin: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
+            /* Radial glow effect from your reference image */
+            background: radial-gradient(circle at 50% 30%, var(--bg-glow) 0%, var(--bg-color) 80%);
+            background-attachment: fixed;
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
@@ -29,18 +36,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 15, 17, 0.85);
+            background: rgba(5, 5, 10, 0.7);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #333;
-            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
         }
 
         .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
         .logo span { color: var(--accent-color); }
-        nav a { color: var(--text-color); text-decoration: none; margin-left: 2rem; transition: color 0.3s ease; font-size: 0.9rem; }
-        nav a:hover { color: var(--accent-color); }
+        nav a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; transition: color 0.3s ease; font-size: 0.9rem; }
+        nav a:hover { color: #fff; }
 
         /* --- SCROLL ANIMATIONS --- */
         .animate-on-scroll {
@@ -57,77 +64,70 @@
         .profile-section { padding: 6rem 20px 3rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .profile-photo { 
             width: 180px; height: 180px; border-radius: 50%; 
-            object-fit: cover; border: 3px solid var(--accent-color); 
-            margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3); 
+            object-fit: cover; border: 1px solid var(--glass-border); 
+            margin-bottom: 1.5rem; box-shadow: 0 0 50px rgba(138, 153, 255, 0.15); 
         }
-        .profile-section h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin: 0; letter-spacing: -1px; }
-        .profile-section p { font-size: 1.2rem; color: #aaaaaa; margin-top: 0.5rem; }
+        
+        /* Gradient text for name */
+        .profile-section h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            margin: 0; 
+            letter-spacing: -2px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .profile-section p { font-size: 1.2rem; color: var(--text-dim); margin-top: 0.5rem; letter-spacing: 1px; }
 
         .about-container { max-width: 600px; margin: 2rem auto; }
 
         /* --- SKILLS --- */
         .skills-grid { display: flex; justify-content: center; gap: 1rem; padding: 2rem 10%; flex-wrap: wrap; }
-        .skill-tag { background-color: var(--card-bg); padding: 8px 20px; border-radius: 50px; border: 1px solid #333; font-size: 0.85rem; }
+        .skill-tag { 
+            background-color: var(--card-bg); 
+            padding: 8px 22px; 
+            border-radius: 50px; 
+            border: 1px solid var(--glass-border); 
+            font-size: 0.85rem; 
+            color: var(--text-dim);
+            backdrop-filter: blur(5px);
+        }
 
         /* --- PORTFOLIO SECTIONS --- */
         .portfolio-section { padding: 5rem 10%; }
-        .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3.5rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
 
-        /* WIDESCREEN GRID */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        /* VERTICAL GRID - FIXED FOR REPEATING ROWS */
-        .reels-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            width: 100%;
-            align-items: start;
-        }
+        /* GRIDS */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; align-items: start; }
 
         .grid-item {
             background-color: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
-            border: 1px solid #222;
+            border: 1px solid var(--glass-border);
             width: 100%;
         }
 
         .grid-item:hover { 
-            transform: scale(1.02);
-            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            border-color: rgba(138, 153, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- VIDEO PLAYER FIXES --- */
-        .video-container { 
-            width: 100%; 
-            position: relative;
-            background: #000; 
-            overflow: hidden; 
-        }
-
+        /* VIDEO CONTAINERS */
+        .video-container { width: 100%; position: relative; background: #000; overflow: hidden; }
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box { aspect-ratio: 9 / 16; }
 
-        .drive-video-player {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        .drive-video-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        .project-info { padding: 1.2rem; flex-grow: 1; }
-        .project-info h3 { margin: 0 0 5px 0; font-size: 1rem; color: #fff; text-transform: capitalize; }
-        .project-info p { color: #888; font-size: 0.8rem; margin: 0; }
+        .project-info { padding: 1.5rem; flex-grow: 1; }
+        .project-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #fff; font-weight: 600; }
+        .project-info p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
 
         /* --- GALLERY --- */
         .gallery-wrapper {
@@ -136,7 +136,7 @@
             gap: 20px;
             padding-bottom: 25px;
             scrollbar-width: thin;
-            scrollbar-color: var(--accent-color) #111;
+            scrollbar-color: var(--accent-color) #05050a;
             scroll-snap-type: x mandatory;
         }
 
@@ -145,33 +145,45 @@
             scroll-snap-align: start;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #333;
+            border: 1px solid var(--glass-border);
             height: 400px;
             background: #111;
         }
-
         .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
 
         /* --- CONTACT --- */
-        .contact-section { padding: 5rem 10%; text-align: center; background: #111; }
-        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; margin-top: 20px; }
-        .btn:hover { background-color: #ff0b16; transform: translateY(-3px); }
+        .contact-section { padding: 8rem 10%; text-align: center; }
         
-        .contact-container { display: flex; justify-content: center; gap: 40px; margin: 2rem 0; }
-        .social-link { color: var(--text-color); text-decoration: none; font-size: 2.2rem; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .social-link:hover { color: var(--accent-color); transform: translateY(-5px); }
-        .social-link span { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; }
-
-        footer { text-align: center; padding: 3rem; color: #555; font-size: 0.8rem; border-top: 1px solid #222; }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 1024px) {
-            .reels-grid { grid-template-columns: repeat(2, 1fr); }
+        /* The White Primary Button from your screenshot */
+        .btn { 
+            display: inline-block; 
+            padding: 14px 45px; 
+            background-color: #ffffff; 
+            color: #000000; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: bold; 
+            transition: 0.3s ease; 
+            cursor: pointer; 
+            border: none; 
+            margin-top: 25px; 
+            letter-spacing: 1px;
         }
+        .btn:hover { background-color: var(--accent-color); color: #fff; transform: translateY(-3px); }
+        
+        .contact-container { display: flex; justify-content: center; gap: 50px; margin: 2rem 0; }
+        .social-link { color: var(--text-dim); text-decoration: none; font-size: 2.2rem; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .social-link:hover { color: #fff; transform: translateY(-5px); }
+        .social-link span { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 2px; }
+
+        footer { text-align: center; padding: 4rem; color: #444; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) { .reels-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .portfolio-grid, .reels-grid { grid-template-columns: 1fr; }
-            .gallery-item { height: 300px; }
-            .contact-container { gap: 20px; }
+            .gallery-item { height: 320px; }
+            .profile-section h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -180,7 +192,7 @@
     <header>
         <div class="logo">Alan<span>Martin</span></div>
         <nav>
-            <a href="#widescreen">Projects</a>
+            <a href="#widescreen">Work</a>
             <a href="#gallery">Gallery</a>
             <a href="#reels">Vertical</a>
             <a href="#contact">Contact</a>
@@ -193,7 +205,6 @@
         <p class="animate-on-scroll">Video Editor & Motion Graphics Artist</p>
 
         <div class="about-container animate-on-scroll">
-            <h2>About Me</h2>
             <p>Visual Storyteller and Motion Designer specializing in cinematic experiences using After Effects and DaVinci Resolve.</p>
         </div>
         
@@ -213,35 +224,31 @@
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH" alt="Work 3"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8" alt="Work 4"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1B5fp8KF37lGOpWNYTcGSs4YACUvAYFhO" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/14tsuZiw98b9OLDjervap0SS4CDodvVbQ" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1YWaI92GP4CyFwEcy-MnSAuOw7FTXkQp4" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1k39hCEM4TLCX6WBOEzgVQ8WeFkkZoTif" alt="Work 5"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w" alt="Work 6"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n" alt="Work 7"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa" alt="Work 8"></div>
         </div>
     </section>
 
-    <section id="widescreen" class="portfolio-section" style="background-color: #141416;">
+    <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
         <h2 class="section-title animate-on-scroll">Widescreen Projects</h2>
         <div class="portfolio-grid">
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1WYHevBc39WNaMcOrR9MYr-BXAymscSJR/preview"></iframe>
                 </div>
-                <div class="project-info"><h3>motion graphics</h3><p>LED Wall Content</p></div>
+                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview"></iframe>
                 </div>
-                <div class="project-info"><h3>motion graphics</h3><p>LED Wall Content</p></div>
+                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
         </div> 
     </section>
 
-    <section id="reels" class="portfolio-section" style="background-color: #0f0f11;">
+    <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
             <div class="grid-item animate-on-scroll">
@@ -249,54 +256,38 @@
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe>
                 </div>
             </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview"></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1s6LWSv3M66-JEiTAbq59ktsNKcL4KjgE/preview"></iframe>
-                </div>
-            </div>
-            </div> 
+        </div> 
     </section>
 
    <section id="contact" class="contact-section">
-        <h2 class="animate-on-scroll">Ready to start a project?</h2>
+        <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
         <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" onclick="handleMailClick(event)" class="social-link animate-on-scroll">
+            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
             </a>
@@ -305,7 +296,7 @@
                 <span>Instagram</span>
             </a>
         </div>
-        <a href="mailto:martinalan586@gmail.com" onclick="handleMailClick(event)" class="btn animate-on-scroll">Hire Me</a>
+        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
     </section>
 
     <footer>
@@ -313,17 +304,6 @@
     </footer>
 
     <script>
-        function handleMailClick(e) {
-            const email = "martinalan586@gmail.com";
-            const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email;
-            let timeout = setTimeout(function() {
-                window.open(gmailUrl, '_blank');
-            }, 500);
-            window.onblur = function() {
-                clearTimeout(timeout);
-            };
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -337,7 +317,3 @@
     </script>
 </body>
 </html>
-
-
-
-
