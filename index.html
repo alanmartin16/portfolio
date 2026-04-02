@@ -284,44 +284,48 @@
         </div> 
     </section>
 
-   <section id="contact" class="contact-section">
-        <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
-        <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
-           <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll" onclick="contactMe(event)">
-    <i class="fas fa-envelope"></i>
-    <span>Email</span>
-</a>
+  <section id="contact" class="contact-section">
+    <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
+    
+    <div class="contact-container">
+        <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll" onclick="contactMe(event, 'email')">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+        </a>
+        
+        <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </a>
+    </div>
 
-<a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll" onclick="contactMe(event)">Hire Me</a>
-    </section>
-
+    <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll" onclick="contactMe(event, 'email')">Hire Me</a>
+</section>
     <footer>
         <p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p>
     </footer>
 
-    <script>
-    function contactMe(e) {
-        const email = "martinalan586@gmail.com";
-        const subject = "Project Inquiry";
-        const body = "Hi Alan, I saw your portfolio and would like to discuss a project...";
-        
-        // Check if the user is on a mobile device
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+   <script>
+    function contactMe(e, type) {
+        if (type === 'email') {
+            const email = "martinalan586@gmail.com";
+            const subject = "Project Inquiry - Video Editing";
+            const body = "Hi Alan,\n\nI saw your portfolio and I'm interested in working with you on a project.";
+            
+            // Detect if user is on mobile
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-        if (!isMobile) {
-            // If on PC, prevent default and open Gmail in a new tab
-            e.preventDefault();
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.open(gmailUrl, '_blank');
+            if (!isMobile) {
+                // PC Fix: Stop the broken mailto: and open Gmail Web
+                e.preventDefault();
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.open(gmailUrl, '_blank');
+            }
+            // Mobile will naturally open the Mail App via the 'href'
         }
-        // If on Mobile, let the default 'mailto:' handle it (opens Mail App)
     }
 
-    // This handles your scroll animations (keep this part!)
+    // Scroll Animation Logic
     document.addEventListener("DOMContentLoaded", function() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
