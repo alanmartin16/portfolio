@@ -99,7 +99,8 @@
            RESPONSIVE GRIDS
            Desktop  (>1024px): horizontal=2col, reels=3col
            Tablet   (768–1024px): horizontal=2col, reels=2col
-           Mobile   (<768px):  both=1col
+           Mobile   (<768px):  horizontal=1col, reels=2col (capped width)
+           Small mobile (<480px): both=1col (capped width)
         ============================================= */
 
         /* Horizontal / widescreen grid */
@@ -118,7 +119,7 @@
             align-items: start;
         }
 
-        /* --- Tablet --- */
+        /* --- Tablet (768–1024px) --- */
         @media (max-width: 1024px) {
             .reels-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -127,21 +128,23 @@
             .portfolio-section { padding: 4rem 6%; }
         }
 
-        /* --- Mobile --- */
+        /* --- Mobile (≤768px) --- */
         @media (max-width: 768px) {
+            /* Horizontal: single column, full width is fine for 16:9 */
             .portfolio-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
-            .reels-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .portfolio-section { padding: 3rem 4%; }
-            .profile-section h1 { font-size: 3rem; }
 
-            /* Shrink nav on mobile */
-            nav a { margin-left: 1rem; font-size: 0.8rem; }
+            /* Vertical reels: 2 per row so each card is narrower → video stays compact */
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .portfolio-section { padding: 3rem 4%; }
+            .profile-section h1 { font-size: 2.5rem; }
+            nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
         }
 
@@ -150,7 +153,28 @@
             header { padding: 0.75rem 4%; }
             nav a { margin-left: 0.6rem; font-size: 0.72rem; }
             .section-title { font-size: 1.3rem; letter-spacing: 2px; }
-            .portfolio-section { padding: 2.5rem 4%; }
+            .portfolio-section { padding: 2.5rem 3%; }
+
+            /* Horizontal: full width OK */
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            /* Vertical reels: still 2-col on small phones — keeps each video small */
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+
+        /* --- Very small (≤360px, e.g. older Android) --- */
+        @media (max-width: 360px) {
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            .portfolio-section { padding: 2rem 3%; }
         }
 
         /* CARD */
