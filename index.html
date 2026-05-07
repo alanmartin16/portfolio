@@ -6,7 +6,6 @@
     <title>Alan Martin | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- THEME SETUP --- */
         :root {
             --bg-color: #05050a; 
             --bg-glow: #1a1b3b;
@@ -57,85 +56,91 @@
         .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
 
         /* --- HERO --- */
-        .profile-section { padding: 4rem 20px 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .profile-section { padding: 3rem 20px 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .profile-photo { 
-            width: 140px; height: 140px; border-radius: 50%; 
+            width: 120px; height: 120px; border-radius: 50%; 
             object-fit: cover; border: 1px solid var(--glass-border); 
             margin-bottom: 1rem; box-shadow: 0 0 30px rgba(138, 153, 255, 0.15); 
         }
         .profile-section h1 { 
-            font-size: clamp(2rem, 6vw, 3.5rem); margin: 0; 
+            font-size: clamp(1.8rem, 5vw, 3rem); margin: 0; 
             background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .profile-section p { font-size: 1rem; color: var(--text-dim); margin-top: 0.5rem; }
+        .profile-section p { font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem; }
 
-        .skills-grid { display: flex; justify-content: center; gap: 0.8rem; padding: 1.5rem 5%; flex-wrap: wrap; }
+        .skills-grid { display: flex; justify-content: center; gap: 0.6rem; padding: 1rem 5%; flex-wrap: wrap; }
         .skill-tag { 
-            background: var(--card-bg); padding: 6px 16px; border-radius: 50px; 
-            border: 1px solid var(--glass-border); font-size: 0.75rem; color: var(--text-dim);
+            background: var(--card-bg); padding: 5px 14px; border-radius: 50px; 
+            border: 1px solid var(--glass-border); font-size: 0.7rem; color: var(--text-dim);
         }
 
-        /* --- RESPONSIVE GRIDS --- */
-        .portfolio-section { padding: 3rem 5%; max-width: 1400px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 1.2rem; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 4px; color: var(--text-dim); }
+        /* --- PORTFOLIO SECTIONS --- */
+        .portfolio-section { padding: 2rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 1.1rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dim); }
 
-        /* Horizontal: 2 per row on desktop, 1 on mobile */
+        /* --- HORIZONTAL GRID FIX --- */
         .portfolio-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(2, 1fr); /* Default 2 columns for Laptop/Desktop */
             gap: 20px; 
         }
 
-        /* Vertical: Scales from 2 to 5 columns automatically */
+        /* --- VERTICAL GRID --- */
         .reels-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
-            gap: 15px; 
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+            gap: 12px; 
         }
 
         .grid-item {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--glass-border);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: 0.3s;
         }
-        .grid-item:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .grid-item:hover { border-color: var(--accent-color); transform: scale(1.02); }
 
-        .video-container { width: 100%; position: relative; background: #000; overflow: hidden; }
+        .video-container { width: 100%; position: relative; background: #000; }
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box { aspect-ratio: 9 / 16; }
         .drive-video-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        .project-info { padding: 12px; }
-        .project-info h3 { margin: 0; font-size: 0.85rem; color: #fff; }
-        .project-info p { color: var(--text-dim); font-size: 0.7rem; margin: 2px 0 0 0; }
+        .project-info { padding: 10px; }
+        .project-info h3 { margin: 0; font-size: 0.8rem; color: #fff; }
+        .project-info p { color: var(--text-dim); font-size: 0.65rem; margin: 2px 0 0 0; }
 
         /* --- GALLERY --- */
         .gallery-wrapper {
-            display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px;
+            display: flex; overflow-x: auto; gap: 12px; padding-bottom: 10px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
         }
-        .gallery-item { flex: 0 0 auto; height: 220px; border-radius: 8px; border: 1px solid var(--glass-border); }
+        .gallery-item { flex: 0 0 auto; height: 180px; border-radius: 8px; border: 1px solid var(--glass-border); }
         .gallery-item img { height: 100%; border-radius: 8px; }
 
         /* --- CONTACT --- */
-        .contact-section { padding: 4rem 10%; text-align: center; }
+        .contact-section { padding: 3rem 10%; text-align: center; }
         .btn { 
-            display: inline-block; padding: 12px 35px; background: #fff; color: #000; 
+            display: inline-block; padding: 10px 30px; background: #fff; color: #000; 
             text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 0.8rem; transition: 0.3s; 
         }
-        .btn:hover { background: var(--accent-color); color: #fff; transform: translateY(-3px); }
-        .contact-container { display: flex; justify-content: center; gap: 40px; margin: 2rem 0; }
-        .social-link { color: var(--text-dim); font-size: 1.8rem; transition: 0.3s; }
+        .btn:hover { background: var(--accent-color); color: #fff; }
+        .contact-container { display: flex; justify-content: center; gap: 30px; margin: 1.5rem 0; }
+        .social-link { color: var(--text-dim); font-size: 1.5rem; transition: 0.3s; }
         .social-link:hover { color: #fff; }
 
-        footer { padding: 3rem; color: #444; font-size: 0.7rem; text-align: center; }
+        footer { padding: 2rem; color: #444; font-size: 0.65rem; text-align: center; }
 
-        /* Mobile specific adjustments */
+        /* --- MOBILE & TABLET OPTIMIZATION --- */
+        @media (max-width: 850px) {
+            .portfolio-grid { grid-template-columns: 1fr; } /* Stack Horizontal Content on tablets/phones */
+            .profile-section { padding-top: 2rem; }
+        }
+
         @media (max-width: 480px) {
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .portfolio-grid { grid-template-columns: 1fr; }
+            .reels-grid { grid-template-columns: repeat(2, 1fr); } /* 2 per row for Reels on small phones */
+            .section-title { font-size: 0.9rem; }
+            .gallery-item { height: 150px; }
         }
     </style>
 </head>
@@ -166,19 +171,18 @@
 
     <!-- GALLERY -->
     <section id="gallery" class="portfolio-section">
-        <h2 class="section-title animate-on-scroll">Selected Frames</h2>
+        <h2 class="section-title animate-on-scroll">Visual Stills</h2>
         <div class="gallery-wrapper animate-on-scroll">
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2"></div>
         </div>
     </section>
 
-    <!-- HORIZONTAL CONTENT -->
+    <!-- HORIZONTAL CONTENT (FIXED) -->
     <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
-        <h2 class="section-title animate-on-scroll">Horizontal Work</h2>
+        <h2 class="section-title animate-on-scroll">Horizontal Projects</h2>
         <div class="portfolio-grid">
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
@@ -199,19 +203,8 @@
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
-            <!-- Example Item 1 -->
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe>
-                </div>
-            </div>
-            <!-- Example Item 2 -->
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe>
-                </div>
-            </div>
-            <!-- Add more reels here -->
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe></div></div>
             <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe></div></div>
             <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe></div></div>
             <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe></div></div>
@@ -220,7 +213,7 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <h2 class="animate-on-scroll">Ready for the next project?</h2>
+        <h2 class="animate-on-scroll">Let's Work Together</h2>
         <div class="contact-container">
             <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll"><i class="fas fa-envelope"></i></a>
             <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll"><i class="fab fa-instagram"></i></a>
@@ -229,7 +222,7 @@
     </section>
 
     <footer>
-        <p>© 2026 Alan Martin | Optimized Experience</p>
+        <p>© 2026 Alan Martin | Mobile Optimized Portfolio</p>
     </footer>
 
     <script>
