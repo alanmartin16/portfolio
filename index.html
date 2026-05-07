@@ -6,6 +6,7 @@
     <title>Alan Martin | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* --- CINEMATIC GRADIENT THEME --- */
         :root {
             --bg-color: #05050a; 
             --bg-glow: #1a1b3b;
@@ -19,7 +20,7 @@
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             background: radial-gradient(circle at 50% 30%, var(--bg-glow) 0%, var(--bg-color) 80%);
             background-attachment: fixed;
@@ -34,114 +35,215 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 5, 10, 0.8);
+            background: rgba(5, 5, 10, 0.7);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
             border-bottom: 1px solid var(--glass-border);
             backdrop-filter: blur(15px);
         }
 
-        .logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
         .logo span { color: var(--accent-color); }
-        nav a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; transition: 0.3s; font-size: 0.8rem; }
+        nav a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; transition: color 0.3s ease; font-size: 0.9rem; }
         nav a:hover { color: #fff; }
 
-        /* --- ANIMATIONS --- */
+        /* --- SCROLL ANIMATIONS --- */
         .animate-on-scroll {
             opacity: 0; 
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
+        .animate-on-scroll.show { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-        /* --- HERO --- */
-        .profile-section { padding: 3rem 20px 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        /* --- HERO SECTION --- */
+        .profile-section { padding: 6rem 20px 3rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .profile-photo { 
-            width: 120px; height: 120px; border-radius: 50%; 
+            width: 180px; height: 180px; border-radius: 50%; 
             object-fit: cover; border: 1px solid var(--glass-border); 
-            margin-bottom: 1rem; box-shadow: 0 0 30px rgba(138, 153, 255, 0.15); 
+            margin-bottom: 1.5rem; box-shadow: 0 0 50px rgba(138, 153, 255, 0.15); 
         }
+        
         .profile-section h1 { 
-            font-size: clamp(1.8rem, 5vw, 3rem); margin: 0; 
-            background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            margin: 0; 
+            letter-spacing: -2px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .profile-section p { font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem; }
+        .profile-section p { font-size: 1.2rem; color: var(--text-dim); margin-top: 0.5rem; letter-spacing: 1px; }
 
-        .skills-grid { display: flex; justify-content: center; gap: 0.6rem; padding: 1rem 5%; flex-wrap: wrap; }
+        .about-container { max-width: 600px; margin: 2rem auto; }
+
+        /* --- SKILLS --- */
+        .skills-grid { display: flex; justify-content: center; gap: 1rem; padding: 2rem 10%; flex-wrap: wrap; }
         .skill-tag { 
-            background: var(--card-bg); padding: 5px 14px; border-radius: 50px; 
-            border: 1px solid var(--glass-border); font-size: 0.7rem; color: var(--text-dim);
+            background-color: var(--card-bg); 
+            padding: 8px 22px; 
+            border-radius: 50px; 
+            border: 1px solid var(--glass-border); 
+            font-size: 0.85rem; 
+            color: var(--text-dim);
+            backdrop-filter: blur(5px);
         }
 
         /* --- PORTFOLIO SECTIONS --- */
-        .portfolio-section { padding: 2rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 1.1rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dim); }
+        .portfolio-section { padding: 5rem 10%; }
+        .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3.5rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
 
-        /* --- HORIZONTAL GRID FIX --- */
-        .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* Default 2 columns for Laptop/Desktop */
-            gap: 20px; 
+        /* =============================================
+           RESPONSIVE GRIDS
+           Desktop  (>1024px): horizontal=2col, reels=3col
+           Tablet   (768–1024px): horizontal=2col, reels=2col
+           Mobile   (<768px):  both=1col
+        ============================================= */
+
+        /* Horizontal / widescreen grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
 
-        /* --- VERTICAL GRID --- */
-        .reels-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-            gap: 12px; 
+        /* Vertical / reels grid */
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            align-items: start;
         }
 
+        /* --- Tablet --- */
+        @media (max-width: 1024px) {
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .portfolio-section { padding: 4rem 6%; }
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .reels-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .portfolio-section { padding: 3rem 4%; }
+            .profile-section h1 { font-size: 3rem; }
+
+            /* Shrink nav on mobile */
+            nav a { margin-left: 1rem; font-size: 0.8rem; }
+            .logo { font-size: 1.2rem; }
+        }
+
+        /* --- Small mobile (≤480px) --- */
+        @media (max-width: 480px) {
+            header { padding: 0.75rem 4%; }
+            nav a { margin-left: 0.6rem; font-size: 0.72rem; }
+            .section-title { font-size: 1.3rem; letter-spacing: 2px; }
+            .portfolio-section { padding: 2.5rem 4%; }
+        }
+
+        /* CARD */
         .grid-item {
-            background: var(--card-bg);
-            border-radius: 10px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
             border: 1px solid var(--glass-border);
-            transition: 0.3s;
+            width: 100%;
         }
-        .grid-item:hover { border-color: var(--accent-color); transform: scale(1.02); }
 
-        .video-container { width: 100%; position: relative; background: #000; }
+        .grid-item:hover { 
+            transform: translateY(-8px);
+            border-color: rgba(138, 153, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* VIDEO CONTAINERS — aspect-ratio handles all sizing automatically */
+        .video-container {
+            width: 100%;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+        }
         .horizontal-box { aspect-ratio: 16 / 9; }
-        .vertical-box { aspect-ratio: 9 / 16; }
-        .drive-video-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .vertical-box   { aspect-ratio: 9 / 16; }
 
-        .project-info { padding: 10px; }
-        .project-info h3 { margin: 0; font-size: 0.8rem; color: #fff; }
-        .project-info p { color: var(--text-dim); font-size: 0.65rem; margin: 2px 0 0 0; }
+        .drive-video-player {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .project-info { padding: 1.5rem; flex-grow: 1; }
+        .project-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #fff; font-weight: 600; }
+        .project-info p  { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
 
         /* --- GALLERY --- */
         .gallery-wrapper {
-            display: flex; overflow-x: auto; gap: 12px; padding-bottom: 10px;
-            scroll-snap-type: x mandatory; scrollbar-width: none;
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 25px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) #05050a;
+            scroll-snap-type: x mandatory;
         }
-        .gallery-item { flex: 0 0 auto; height: 180px; border-radius: 8px; border: 1px solid var(--glass-border); }
-        .gallery-item img { height: 100%; border-radius: 8px; }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            height: 400px;
+            background: #111;
+        }
+
+        /* Smaller gallery on mobile */
+        @media (max-width: 768px)  { .gallery-item { height: 260px; } }
+        @media (max-width: 480px)  { .gallery-item { height: 200px; } }
+
+        .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
 
         /* --- CONTACT --- */
-        .contact-section { padding: 3rem 10%; text-align: center; }
+        .contact-section { padding: 8rem 10%; text-align: center; }
+        
         .btn { 
-            display: inline-block; padding: 10px 30px; background: #fff; color: #000; 
-            text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 0.8rem; transition: 0.3s; 
+            display: inline-block; 
+            padding: 14px 45px; 
+            background-color: #ffffff; 
+            color: #000000; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: bold; 
+            transition: 0.3s ease; 
+            cursor: pointer; 
+            border: none; 
+            margin-top: 25px; 
+            letter-spacing: 1px;
         }
-        .btn:hover { background: var(--accent-color); color: #fff; }
-        .contact-container { display: flex; justify-content: center; gap: 30px; margin: 1.5rem 0; }
-        .social-link { color: var(--text-dim); font-size: 1.5rem; transition: 0.3s; }
-        .social-link:hover { color: #fff; }
+        .btn:hover { background-color: var(--accent-color); color: #fff; transform: translateY(-3px); }
+        
+        .contact-container { display: flex; justify-content: center; gap: 50px; margin: 2rem 0; flex-wrap: wrap; }
+        .social-link { color: var(--text-dim); text-decoration: none; font-size: 2.2rem; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .social-link:hover { color: #fff; transform: translateY(-5px); }
+        .social-link span { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 2px; }
 
-        footer { padding: 2rem; color: #444; font-size: 0.65rem; text-align: center; }
-
-        /* --- MOBILE & TABLET OPTIMIZATION --- */
-        @media (max-width: 850px) {
-            .portfolio-grid { grid-template-columns: 1fr; } /* Stack Horizontal Content on tablets/phones */
-            .profile-section { padding-top: 2rem; }
-        }
-
-        @media (max-width: 480px) {
-            .reels-grid { grid-template-columns: repeat(2, 1fr); } /* 2 per row for Reels on small phones */
-            .section-title { font-size: 0.9rem; }
-            .gallery-item { height: 150px; }
-        }
+        footer { text-align: center; padding: 4rem; color: #444; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
     </style>
 </head>
 <body>
@@ -159,79 +261,157 @@
     <section class="profile-section">
         <img src="photo_2025-03-24_20-06-39.jpg" alt="Alan Martin" class="profile-photo animate-on-scroll">
         <h1 class="animate-on-scroll">Alan Martin</h1>
-        <p class="animate-on-scroll">Video Editor & Motion Designer</p>
+        <p class="animate-on-scroll">Video Editor & Motion Graphics Artist</p>
+
+        <div class="about-container animate-on-scroll">
+            <p>Visual Storyteller and Motion Designer specializing in cinematic experiences using After Effects and DaVinci Resolve.</p>
+        </div>
         
         <div class="skills-grid">
             <div class="skill-tag animate-on-scroll">After Effects</div>
-            <div class="skill-tag animate-on-scroll">DaVinci Resolve</div>
             <div class="skill-tag animate-on-scroll">Premiere Pro</div>
             <div class="skill-tag animate-on-scroll">Motion Graphics</div>
+            <div class="skill-tag animate-on-scroll">Davinci Resolve</div>
         </div>
     </section>
 
     <!-- GALLERY -->
     <section id="gallery" class="portfolio-section">
-        <h2 class="section-title animate-on-scroll">Visual Stills</h2>
+        <h2 class="section-title animate-on-scroll">Images</h2>
         <div class="gallery-wrapper animate-on-scroll">
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX" alt="Work 1"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr" alt="Work 2"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH" alt="Work 3"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8" alt="Work 4"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2" alt="Work 5"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w" alt="Work 6"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n" alt="Work 7"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa" alt="Work 8"></div>
         </div>
     </section>
 
-    <!-- HORIZONTAL CONTENT (FIXED) -->
+    <!-- HORIZONTAL VIDEOS -->
     <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
-        <h2 class="section-title animate-on-scroll">Horizontal Projects</h2>
+        <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview"></iframe>
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview"></iframe>
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
         </div> 
     </section>
 
-    <!-- VERTICAL CONTENT -->
+    <!-- VERTICAL VIDEOS -->
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
-            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview"></iframe></div></div>
-            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview"></iframe></div></div>
-            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview"></iframe></div></div>
-            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview"></iframe></div></div>
-            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview"></iframe></div></div>
-            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview"></iframe></div></div>
-        </div> 
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/11rfO_CS10JL_pzlKedCKPjhK2QOv313L/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1MQOI2LA8arKNL9VPJK7HpF1_2mbI05mS/preview" allowfullscreen></iframe>
+                </div>
+                <div class="project-info"><h3>AI Generated Videos</h3></div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1p80n5LR5M0JatA07azH4hqaKxpDoIjHT/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container vertical-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="contact" class="contact-section">
-        <h2 class="animate-on-scroll">Let's Work Together</h2>
+        <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
+        
         <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll" onclick="contactMe(event, 'email')">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+            <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
         </div>
-        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
+
+        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll" onclick="contactMe(event, 'email')">Hire Me</a>
     </section>
 
     <footer>
-        <p>© 2026 Alan Martin | Mobile Optimized Portfolio</p>
+        <p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p>
     </footer>
 
     <script>
+        function contactMe(e, type) {
+            if (type === 'email') {
+                const email = "martinalan586@gmail.com";
+                const subject = "Project Inquiry - Video Editing";
+                const body = "Hi Alan,\n\nI saw your portfolio and I'm interested in working with you on a project.";
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if (!isMobile) {
+                    e.preventDefault();
+                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    window.open(gmailUrl, '_blank');
+                }
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('show');
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
