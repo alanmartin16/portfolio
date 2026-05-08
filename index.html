@@ -99,8 +99,8 @@
            RESPONSIVE GRIDS
            Desktop  (>1024px): horizontal=2col, reels=3col
            Tablet   (768–1024px): horizontal=2col, reels=2col
-           Mobile   (<768px):  horizontal=1col, reels=2col (capped width)
-           Small mobile (<480px): both=1col (capped width)
+           Mobile   (<768px):  horizontal=1col, reels=2col
+           Small mobile (<480px): both=1col
         ============================================= */
 
         /* Horizontal / widescreen grid */
@@ -130,18 +130,14 @@
 
         /* --- Mobile (≤768px) --- */
         @media (max-width: 768px) {
-            /* Horizontal: single column, full width is fine for 16:9 */
             .portfolio-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
-
-            /* Vertical reels: 2 per row so each card is narrower → video stays compact */
             .reels-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-
             .portfolio-section { padding: 3rem 4%; }
             .profile-section h1 { font-size: 2.5rem; }
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
@@ -154,21 +150,17 @@
             nav a { margin-left: 0.6rem; font-size: 0.72rem; }
             .section-title { font-size: 1.3rem; letter-spacing: 2px; }
             .portfolio-section { padding: 2.5rem 3%; }
-
-            /* Horizontal: full width OK */
             .portfolio-grid {
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
-
-            /* Vertical reels: still 2-col on small phones — keeps each video small */
             .reels-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
             }
         }
 
-        /* --- Very small (≤360px, e.g. older Android) --- */
+        /* --- Very small (≤360px) --- */
         @media (max-width: 360px) {
             .reels-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -195,7 +187,7 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* VIDEO CONTAINERS — aspect-ratio handles all sizing automatically */
+        /* VIDEO CONTAINERS */
         .video-container {
             width: 100%;
             position: relative;
@@ -237,11 +229,37 @@
             background: #111;
         }
 
-        /* Smaller gallery on mobile */
         @media (max-width: 768px)  { .gallery-item { height: 260px; } }
         @media (max-width: 480px)  { .gallery-item { height: 200px; } }
 
         .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
+
+        /* --- VISITOR COUNTER --- */
+        .visitor-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            margin: 0 auto 2rem;
+            width: fit-content;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+        .visitor-counter i {
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+        .visitor-counter .count {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
 
         /* --- CONTACT --- */
         .contact-section { padding: 8rem 10%; text-align: center; }
@@ -290,6 +308,13 @@
         <div class="about-container animate-on-scroll">
             <p>Visual Storyteller and Motion Designer specializing in cinematic experiences using After Effects and DaVinci Resolve.</p>
         </div>
+
+        <!-- VISITOR COUNTER -->
+        <div class="visitor-counter animate-on-scroll">
+            <i class="fas fa-eye"></i>
+            <span>Portfolio Views</span>
+            <span class="count" id="visit-count">—</span>
+        </div>
         
         <div class="skills-grid">
             <div class="skill-tag animate-on-scroll">After Effects</div>
@@ -318,89 +343,113 @@
     <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
         <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
-             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe>
                 </div>
-        </div> 
+                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
+            </div>
+
+            <!-- Add more horizontal videos here — they will auto-fit into the 2-column grid -->
+
+        </div>
     </section>
 
     <!-- VERTICAL VIDEOS -->
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/11rfO_CS10JL_pzlKedCKPjhK2QOv313L/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1MQOI2LA8arKNL9VPJK7HpF1_2mbI05mS/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>AI Generated Videos</h3></div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1p80n5LR5M0JatA07azH4hqaKxpDoIjHT/preview" allowfullscreen></iframe>
                 </div>
             </div>
+
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe>
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvb6Vit4DqAxaPI/preview" allowfullscreen></iframe>
                 </div>
-                  <div class="grid-item animate-on-scroll">
+            </div>
+
+            <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1H9QiwleOcI0i94JBXy8XjoWtMCQ9N-eH/preview" allowfullscreen></iframe>
-                   </div>
+                </div>
+            </div>
+
+            <!-- Add more vertical videos here — they will auto-fit into the 3-column grid -->
+
         </div>
     </section>
 
@@ -425,6 +474,10 @@
         <p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p>
     </footer>
 
+    <!-- GoatCounter tracking — replace YOUR-CODE with your site code from goatcounter.com -->
+    <script data-goatcounter="https://YOUR-CODE.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
     <script>
         function contactMe(e, type) {
             if (type === 'email') {
@@ -439,6 +492,17 @@
                 }
             }
         }
+
+        // Fetch visitor count from GoatCounter
+        // Replace YOUR-CODE with your site code
+        fetch('https://YOUR-CODE.goatcounter.com/counter//.json')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('visit-count').textContent = data.count_unique ?? data.count ?? '—';
+            })
+            .catch(() => {
+                document.getElementById('visit-count').textContent = '—';
+            });
 
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
