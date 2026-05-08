@@ -91,26 +91,8 @@
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
         }
-        @media (max-width: 480px) {
-            header { padding: 0.75rem 4%; }
-            nav a { margin-left: 0.6rem; font-size: 0.72rem; }
-            .section-title { font-size: 1.3rem; letter-spacing: 2px; }
-            .portfolio-section { padding: 2.5rem 3%; }
-            .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        }
 
-        .grid-item {
-            background-color: var(--card-bg); border-radius: 12px; overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex; flex-direction: column; border: 1px solid var(--glass-border); width: 100%;
-        }
-        .grid-item:hover { 
-            transform: translateY(-8px); border-color: rgba(138, 153, 255, 0.5);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        /* CRITICAL VERTICAL FIXES */
+        /* FINAL ATTEMPT AT MOBILE VERTICAL CENTERING */
         .video-container { 
             width: 100%; 
             position: relative; 
@@ -125,22 +107,38 @@
         .vertical-box   { aspect-ratio: 9 / 16; }
 
         .drive-video-player {
-            position: absolute;
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
         }
 
         @media (max-width: 768px) {
             .vertical-box .drive-video-player {
-                width: 115%; /* Minimal zoom to hide UI without causing offset */
+                position: absolute;
+                width: 108%; /* Minimal zoom to hide UI */
                 height: 100%;
                 left: 50%;
                 top: 50%;
-                transform: translate(-50%, -50%); /* Forces perfect centering */
-                object-fit: cover; /* Prevents thumbnail stretching */
+                transform: translate(-50%, -50%); /* Force center */
             }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 0.75rem 4%; }
+            nav a { margin-left: 0.6rem; font-size: 0.72rem; }
+            .section-title { font-size: 1.3rem; letter-spacing: 2px; }
+            .portfolio-section { padding: 2.5rem 3%; }
+            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        }
+
+        .grid-item {
+            background-color: var(--card-bg); border-radius: 12px; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex; flex-direction: column; border: 1px solid var(--glass-border); width: 100%;
+        }
+        .grid-item:hover { 
+            transform: translateY(-8px); border-color: rgba(138, 153, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
@@ -228,107 +226,90 @@
     <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
         <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
         </div>
     </section>
 
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/11rfO_CS10JL_pzlKedCKPjhK2QOv313L/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1MQOI2LA8arKNL9VPJK7HpF1_2mbI05mS/preview" allowfullscreen></iframe>
                 </div>
                 <div class="project-info"><h3>AI Generated Videos</h3></div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1p80n5LR5M0JatA07azH4hqaKxpDoIjHT/preview" allowfullscreen></iframe>
                 </div>
             </div>
-            
            <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1H9QiwleOcI0i94JBXy8XjoWtMCQ9N-eH/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -338,7 +319,6 @@
 
     <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
-        
         <div class="contact-container">
             <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll" onclick="contactMe(event, 'email')">
                 <i class="fas fa-envelope"></i>
@@ -349,7 +329,6 @@
                 <span>Instagram</span>
             </a>
         </div>
-
         <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll" onclick="contactMe(event, 'email')">Hire Me</a>
     </section>
 
@@ -375,19 +354,16 @@
         (function () {
             const NAMESPACE = 'alanmartin-portfolio';
             const KEY = 'views';
-
             fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
                 .then(function (r) { return r.json(); })
                 .then(function (data) {
                     var total = data.value;
                     var el = document.getElementById('visit-count');
                     if (!el) return;
-
                     var start = Math.max(0, total - 60);
                     var steps = 50;
                     var delay = 20;
                     var step = 0;
-
                     var timer = setInterval(function () {
                         step++;
                         var current = Math.round(start + (total - start) * (step / steps));
