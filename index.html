@@ -91,15 +91,23 @@
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
             
-            /* THE FIX: CENTERED & SCALED DOWN */
+            /* FORCE CENTERED ALIGNMENT ON MOBILE */
+            .vertical-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+
             .vertical-box .drive-video-player {
-                position: absolute;
-                width: 110%; /* Smaller scale to fit better */
+                position: relative; /* Changed from absolute to work with Flexbox */
+                width: 112%; /* Scaled down for better fit */
                 height: 100%; 
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%); /* Keeps it dead center regardless of screen size */
+                left: auto; /* Clear previous offsets */
+                top: auto;
+                transform: none; /* Clear previous transforms */
                 border: none;
+                flex-shrink: 0; /* Prevent the video from shrinking */
             }
         }
         @media (max-width: 480px) {
