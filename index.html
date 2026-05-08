@@ -128,13 +128,15 @@
             display: block;
         }
 
+        /* FIXED MOBILE ALIGNMENT */
         @media (max-width: 768px) {
             .vertical-box .drive-video-player {
                 position: absolute;
-                top: -5%;
-                left: -5%;
-                width: 110%;
-                height: 110%;
+                top: 0;
+                left: 50%; /* Center the anchor point */
+                width: 115%; /* Slight zoom to hide UI */
+                height: 100%;
+                transform: translateX(-50%); /* Pull back by half its width for perfect centering */
                 border: none;
             }
         }
@@ -207,7 +209,6 @@
         </div>
     </section>
 
-    <!-- GALLERY -->
     <section id="gallery" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Images</h2>
         <div class="gallery-wrapper animate-on-scroll">
@@ -222,7 +223,6 @@
         </div>
     </section>
 
-    <!-- HORIZONTAL VIDEOS -->
     <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
         <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
@@ -250,7 +250,6 @@
         </div>
     </section>
 
-    <!-- VERTICAL VIDEOS -->
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
@@ -330,6 +329,10 @@
 
         </div>
     </section>
+
+    <div class="visitor-counter">
+        <i class="fas fa-eye"></i> <span id="visit-count" class="count">0</span> views
+    </div>
 
     <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
