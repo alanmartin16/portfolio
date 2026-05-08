@@ -129,11 +129,17 @@
         }
 
         @media (max-width: 768px) {
+            .vertical-box {
+                overflow: hidden;
+            }
             .vertical-box .drive-video-player {
+                position: absolute;
+                top: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 100%;
+                width: 180%;
                 height: 100%;
+                margin-left: -40%;
             }
         }
 
