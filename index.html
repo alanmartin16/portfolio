@@ -118,24 +118,14 @@
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box   { aspect-ratio: 9 / 16; }
 
-        /* FIX: give extra height so Drive's bottom controls aren't cut off */
         .drive-video-player {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 115%;
+            height: 100%;
             border: none;
             display: block;
-        }
-
-        /* FIX: on mobile, Drive shifts video right — compensate with negative left */
-        @media (max-width: 768px) {
-            .drive-video-player {
-                left: -12%;
-                width: 124%;
-                height: 115%;
-            }
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
