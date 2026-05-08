@@ -91,14 +91,14 @@
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
             
-            /* UPDATED: REFINED SCALING FOR MOBILE */
+            /* THE FIX: CENTERED & SCALED DOWN */
             .vertical-box .drive-video-player {
                 position: absolute;
-                width: 125%; 
+                width: 110%; /* Smaller scale to fit better */
                 height: 100%; 
-                top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%); 
+                top: 50%;
+                transform: translate(-50%, -50%); /* Keeps it dead center regardless of screen size */
                 border: none;
             }
         }
@@ -354,58 +354,4 @@
             if (type === 'email') {
                 const email = "martinalan586@gmail.com";
                 const subject = "Project Inquiry - Video Editing";
-                const body = "Hi Alan,\n\nI saw your portfolio and I'm interested in working with you on a project.";
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                if (!isMobile) {
-                    e.preventDefault();
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    window.open(gmailUrl, '_blank');
-                }
-            }
-        }
-
-        (function () {
-            const NAMESPACE = 'alanmartin-portfolio';
-            const KEY = 'views';
-
-            fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    var total = data.value;
-                    var el = document.getElementById('visit-count');
-                    if (!el) return;
-
-                    var start = Math.max(0, total - 60);
-                    var steps = 50;
-                    var delay = 20;
-                    var step = 0;
-
-                    var timer = setInterval(function () {
-                        step++;
-                        var current = Math.round(start + (total - start) * (step / steps));
-                        el.textContent = current.toLocaleString();
-                        if (step >= steps) {
-                            clearInterval(timer);
-                            el.textContent = total.toLocaleString();
-                        }
-                    }, delay);
-                })
-                .catch(function () {
-                    var el = document.getElementById('visit-count');
-                    if (el) el.textContent = '—';
-                });
-        })();
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) entry.target.classList.add('show');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
-                observer.observe(el);
-            });
-        });
-    </script>
-</body>
-</html>
+                const body = "Hi Alan,\n\nI saw your portfolio and I'm interested in working with you on
