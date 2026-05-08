@@ -90,25 +90,6 @@
             .profile-section h1 { font-size: 2.5rem; }
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
-            
-            /* FORCE CENTERED ALIGNMENT ON MOBILE */
-            .vertical-box {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-            }
-
-            .vertical-box .drive-video-player {
-                position: relative; /* Changed from absolute to work with Flexbox */
-                width: 112%; /* Scaled down for better fit */
-                height: 100%; 
-                left: auto; /* Clear previous offsets */
-                top: auto;
-                transform: none; /* Clear previous transforms */
-                border: none;
-                flex-shrink: 0; /* Prevent the video from shrinking */
-            }
         }
         @media (max-width: 480px) {
             header { padding: 0.75rem 4%; }
@@ -116,7 +97,7 @@
             .section-title { font-size: 1.3rem; letter-spacing: 2px; }
             .portfolio-section { padding: 2.5rem 3%; }
             .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
         }
 
         .grid-item {
@@ -129,18 +110,37 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .video-container { width: 100%; position: relative; background: #000; overflow: hidden; }
+        /* CRITICAL VERTICAL FIXES */
+        .video-container { 
+            width: 100%; 
+            position: relative; 
+            background: #000; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+        
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box   { aspect-ratio: 9 / 16; }
 
         .drive-video-player {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: none;
             display: block;
+        }
+
+        @media (max-width: 768px) {
+            .vertical-box .drive-video-player {
+                width: 115%; /* Minimal zoom to hide UI without causing offset */
+                height: 100%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%); /* Forces perfect centering */
+                object-fit: cover; /* Prevents thumbnail stretching */
+            }
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
