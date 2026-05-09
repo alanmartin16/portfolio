@@ -91,13 +91,13 @@
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
             
-            /* FIXED CENTERING: Left side black bar maattan 50% alignment thirichu konduvannu */
+            /* FIXED: Left side space kalanju stretch aakki */
             .vertical-box .drive-video-player {
                 width: 100%;
                 height: 100%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                top: 0;
+                left: 0;
+                transform: none;
             }
         }
 
@@ -141,18 +141,6 @@
         @media (max-width: 768px)  { .gallery-item { height: 260px; } }
         .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
 
-        .contact-section { padding: 8rem 10%; text-align: center; }
-        .btn { 
-            display: inline-block; padding: 14px 45px; background-color: #ffffff; color: #000000; 
-            text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.3s ease; 
-            cursor: pointer; border: none; margin-top: 25px; letter-spacing: 1px;
-        }
-        .btn:hover { background-color: var(--accent-color); color: #fff; transform: translateY(-3px); }
-        .contact-container { display: flex; justify-content: center; gap: 50px; margin: 2rem 0; flex-wrap: wrap; }
-        .social-link { color: var(--text-dim); text-decoration: none; font-size: 2.2rem; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .social-link:hover { color: #fff; transform: translateY(-5px); }
-        .social-link span { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 2px; }
-
         footer { text-align: center; padding: 4rem; color: #444; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
     </style>
 </head>
@@ -172,9 +160,6 @@
         <img src="photo_2025-03-24_20-06-39.jpg" alt="Alan Martin" class="profile-photo animate-on-scroll">
         <h1 class="animate-on-scroll">Alan Martin</h1>
         <p class="animate-on-scroll">Video Editor</p>
-        <div class="about-container animate-on-scroll">
-            <p>Visual Storyteller specializing in cinematic experiences using Premiere Pro and DaVinci Resolve.</p>
-        </div>
         <div class="skills-grid">
             <div class="skill-tag animate-on-scroll">After Effects</div>
             <div class="skill-tag animate-on-scroll">Premiere Pro</div>
@@ -199,73 +184,31 @@
     <section id="widescreen" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container horizontal-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container horizontal-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe>
-                </div>
-            </div>
+            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe></div><div class="project-info"><h3>Motion Graphics</h3></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe></div><div class="project-info"><h3>Motion Graphics</h3></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe></div></div>
         </div>
     </section>
 
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe>
-                </div>
-            </div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/11rfO_CS10JL_pzlKedCKPjhK2QOv313L/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1MQOI2LA8arKNL9VPJK7HpF1_2mbI05mS/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1p80n5LR5M0JatA07azH4hqaKxpDoIjHT/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1H9QiwleOcI0i94JBXy8XjoWtMCQ9N-eH/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe></div></div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <h2 class="animate-on-scroll">READY TO START A PROJECT?</h2>
-        <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
-            <a href="https://www.instagram.com/syfics.ae/" target="_blank" class="social-link animate-on-scroll">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-            </a>
-        </div>
-        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
-    </section>
-
-    <footer>
-        <p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p>
-    </footer>
+    <footer><p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p></footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
