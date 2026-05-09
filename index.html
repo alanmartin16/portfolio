@@ -76,10 +76,7 @@
         .portfolio-section { padding: 5rem 10%; }
         .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3.5rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
 
-        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; align-items: start; }
-
-        /* --- VIDEO PLAYER SCALING SYSTEM --- */
+        /* --- BALANCED VIDEO PLAYER SCALING --- */
         .video-container { width: 100%; position: relative; background: #000; overflow: hidden; border-radius: 12px; }
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box   { aspect-ratio: 9 / 16; }
@@ -94,19 +91,18 @@
             border: none;
         }
 
-        /* Responsive Scaling for Vertical Content */
+        /* Fixed scaling for Laptop/Desktop view */
         @media (min-width: 1025px) {
-            /* Laptop view: Moderate scale to keep quality high */
             .vertical-box .drive-video-player {
-                width: 120%;
-                height: 100%;
+                width: 168%; /* Eliminates black sidebars in laptop view */
+                height: 102%;
             }
         }
 
+        /* Fixed scaling for Mobile/Tablet view */
         @media (max-width: 1024px) {
-            /* Tablet/Mobile view: Larger scale to hide bars completely */
             .vertical-box .drive-video-player {
-                width: 140%;
+                width: 158%; /* Scaled down to prevent cropping top of subjects */
                 height: 100%;
             }
             .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
