@@ -114,7 +114,7 @@
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box   { aspect-ratio: 9 / 16; }
 
-        /* Single rule for all iframe players — no zoom, no offset, perfect fill */
+        /* Base rule for all iframes */
         .drive-video-player {
             position: absolute;
             top: 0;
@@ -123,6 +123,16 @@
             height: 100%;
             border: none;
             display: block;
+        }
+
+        /* Google Drive's vertical player has internal UI chrome that
+           shifts the video frame left. Expand and re-center to compensate. */
+        .vertical-box .drive-video-player {
+            width: 130%;
+            height: 108%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
