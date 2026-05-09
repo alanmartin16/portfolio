@@ -31,66 +31,67 @@
 
         .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
         .logo span { color: var(--accent-color); }
-        nav a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; }
+        nav a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: #fff; }
 
         .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
 
         .profile-section { padding: 6rem 20px 3rem; text-align: center; }
-        .profile-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; }
-        .profile-section h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .profile-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 1px solid var(--glass-border); }
+        .profile-section h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+        .profile-section p { color: var(--text-dim); margin-top: 0.5rem; letter-spacing: 1px; }
 
         .skills-grid { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-        .skill-tag { background: var(--card-bg); padding: 8px 22px; border-radius: 50px; border: 1px solid var(--glass-border); color: var(--text-dim); font-size: 0.85rem; }
+        .skill-tag { background: var(--card-bg); padding: 8px 22px; border-radius: 50px; border: 1px solid var(--glass-border); color: var(--text-dim); font-size: 0.85rem; backdrop-filter: blur(5px); }
 
         .portfolio-section { padding: 5rem 10%; }
         .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3.5rem; letter-spacing: 4px; font-weight: 300; text-transform: uppercase; }
 
         .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
 
-        /* THE MOBILE ALIGNMENT FIX */
+        /* THE UNIVERSAL CENTER LOCK */
         .video-container { 
             width: 100%; position: relative; background: #000; overflow: hidden; 
-            display: flex; justify-content: center; align-items: center; /* Flex-centering anchor */
+            display: flex; justify-content: center; align-items: center; 
         }
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box   { aspect-ratio: 9 / 16; }
 
         .drive-video-player { 
             position: absolute; width: 100%; height: 100%; border: none; 
+            top: 50%; left: 50%; transform: translate(-50%, -50%); 
         }
 
         @media (max-width: 768px) {
             .portfolio-grid { grid-template-columns: 1fr; }
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .portfolio-section { padding: 3rem 4%; }
-            
-            /* FORCING CENTERING & ANTI-STRETCH */
             .vertical-box .drive-video-player {
-                width: 110%; /* Scaled down zoom */
+                width: 112%; /* Zoom to hide UI */
                 height: 100%;
-                left: 50%; top: 50%;
-                transform: translate(-50%, -50%); /* DEAD CENTER LOCK */
                 object-fit: cover; 
             }
         }
 
-        .grid-item { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); transition: 0.4s; }
+        .grid-item { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); transition: 0.4s; display: flex; flex-direction: column; }
         .grid-item:hover { transform: translateY(-8px); border-color: rgba(138, 153, 255, 0.5); }
         .project-info { padding: 1.2rem; }
         .project-info h3 { margin: 0; font-size: 1rem; color: #fff; }
+        .project-info p { margin: 5px 0 0; font-size: 0.8rem; color: var(--text-dim); }
 
         .gallery-wrapper { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 25px; scroll-snap-type: x mandatory; }
-        .gallery-item { flex: 0 0 auto; scroll-snap-align: start; border-radius: 12px; overflow: hidden; height: 300px; background: #111; border: 1px solid var(--glass-border); }
+        .gallery-item { flex: 0 0 auto; scroll-snap-align: start; border-radius: 12px; overflow: hidden; height: 350px; background: #111; border: 1px solid var(--glass-border); }
         .gallery-item img { height: 100%; width: auto; object-fit: contain; }
 
         .visitor-counter { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 12px 28px; margin: 2rem auto; width: fit-content; background: var(--card-bg); border-radius: 50px; color: var(--text-dim); border: 1px solid var(--glass-border); }
 
         .contact-section { padding: 6rem 10%; text-align: center; }
-        .social-link { color: var(--text-dim); text-decoration: none; font-size: 2rem; display: inline-block; margin: 0 20px; transition: 0.3s; }
+        .social-link { color: var(--text-dim); text-decoration: none; font-size: 2.2rem; display: inline-block; margin: 0 20px; transition: 0.3s; }
         .social-link:hover { color: #fff; transform: translateY(-5px); }
-        .btn { display: inline-block; padding: 14px 45px; background: #fff; color: #000; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 2rem; }
+        .btn { display: inline-block; padding: 14px 45px; background: #fff; color: #000; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 2rem; transition: 0.3s; }
+        .btn:hover { background: var(--accent-color); color: #fff; }
 
         footer { text-align: center; padding: 3rem; color: #444; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
     </style>
@@ -115,9 +116,11 @@
             <div class="skill-tag animate-on-scroll">After Effects</div>
             <div class="skill-tag animate-on-scroll">Premiere Pro</div>
             <div class="skill-tag animate-on-scroll">Davinci Resolve</div>
+            <div class="skill-tag animate-on-scroll">Motion Graphics</div>
         </div>
     </section>
 
+    <!-- IMAGES SECTION -->
     <section id="gallery" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Images</h2>
         <div class="gallery-wrapper animate-on-scroll">
@@ -125,38 +128,53 @@
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa"></div>
         </div>
     </section>
 
+    <!-- HORIZONTAL CONTENT (3 VIDEOS) -->
     <section id="widescreen" class="portfolio-section">
-        <h2 class="section-title animate-on-scroll">Horizontal</h2>
+        <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe>
                 </div>
+                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
             </div>
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe>
                 </div>
+                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
+            </div>
+            <div class="grid-item animate-on-scroll">
+                <div class="video-container horizontal-box">
+                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- VERTICAL CONTENT (12 VIDEOS) -->
     <section id="reels" class="portfolio-section">
-        <h2 class="section-title animate-on-scroll">Vertical</h2>
+        <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe>
-                </div>
-            </div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/11rfO_CS10JL_pzlKedCKPjhK2QOv313L/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1MQOI2LA8arKNL9VPJK7HpF1_2mbI05mS/preview" allowfullscreen></iframe></div><div class="project-info"><h3>AI Generated</h3></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1p80n5LR5M0JatA07azH4hqaKxpDoIjHT/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1H9QiwleOcI0i94JBXy8XjoWtMCQ9N-eH/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container vertical-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe></div></div>
         </div>
     </section>
 
@@ -173,7 +191,7 @@
         <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
     </section>
 
-    <footer><p>© 2026 Alan Martin.</p></footer>
+    <footer><p>© 2026 Alan Martin. Professional Video Editing Portfolio.</p></footer>
 
     <script>
         (function () {
