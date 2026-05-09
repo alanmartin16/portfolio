@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan Martin | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -68,40 +68,36 @@
         .portfolio-section { padding: 5rem 10%; }
         .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3.5rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
 
-        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
+        /* GRID FIX: Mobile-il side space kalayan gap adjust cheythu */
+        .reels-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            width: 100%; 
+        }
 
         @media (max-width: 1024px) {
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         }
 
         @media (max-width: 768px) {
-            .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
             .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .portfolio-section { padding: 3rem 4%; }
-            .profile-section h1 { font-size: 2.5rem; }
-            nav a { margin-left: 0.9rem; font-size: 0.8rem; }
-            .logo { font-size: 1.2rem; }
+            .portfolio-section { padding: 2rem 3%; }
             
-            /* FINAL MOBILE FIX: Forcing zero-offset and 100% fit */
+            /* FORCE STRETCH: Ithu aanu black bar kalayanulla main logic */
             .drive-video-player {
                 width: 100% !important;
                 height: 100% !important;
                 left: 0 !important;
                 top: 0 !important;
-                transform: none !important;
+                transform: scale(1.01) !important; /* Forces slight zoom to kill edges */
                 position: absolute !important;
             }
         }
 
         .grid-item {
             background-color: var(--card-bg); border-radius: 12px; overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex; flex-direction: column; border: 1px solid var(--glass-border); width: 100%;
-        }
-        .grid-item:hover { 
-            transform: translateY(-8px); border-color: rgba(138, 153, 255, 0.5);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
         .video-container { width: 100%; position: relative; background: #000; overflow: hidden; }
@@ -120,17 +116,16 @@
         }
 
         .gallery-wrapper {
-            display: flex; overflow-x: auto; gap: 20px; padding-bottom: 25px;
-            scrollbar-width: thin; scrollbar-color: var(--accent-color) #05050a; scroll-snap-type: x mandatory;
+            display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px;
+            scrollbar-width: thin;
         }
         .gallery-item {
-            flex: 0 0 auto; scroll-snap-align: start; border-radius: 12px; overflow: hidden;
-            border: 1px solid var(--glass-border); height: 400px; background: #111;
+            flex: 0 0 auto; border-radius: 10px; overflow: hidden;
+            border: 1px solid var(--glass-border); height: 350px; background: #111;
         }
-        @media (max-width: 768px)  { .gallery-item { height: 260px; } }
-        .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
+        .gallery-item img { height: 100%; width: auto; object-fit: contain; }
 
-        footer { text-align: center; padding: 4rem; color: #444; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
+        footer { text-align: center; padding: 3rem; color: #444; font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
     </style>
 </head>
 <body>
@@ -166,15 +161,6 @@
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n"></div>
             <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa"></div>
-        </div>
-    </section>
-
-    <section id="widescreen" class="portfolio-section">
-        <h2 class="section-title">Horizontal Content</h2>
-        <div class="portfolio-grid">
-            <div class="grid-item"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe></div></div>
-            <div class="grid-item"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe></div></div>
-            <div class="grid-item"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe></div></div>
         </div>
     </section>
 
