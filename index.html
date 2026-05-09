@@ -110,14 +110,32 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .video-container { width: 100%; position: relative; background: #000; overflow: hidden; }
-        .horizontal-box { aspect-ratio: 16 / 9; }
+        /* VIDEO CONTAINER - RESPONSIVE FIT */
+        .video-container { 
+            width: 100%; 
+            position: relative; 
+            background: #000; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-        /* 9/16 is the video itself. Drive adds ~50px top bar + ~50px bottom controls.
-           We make the slot taller (9/19) so the full player including UI fits cleanly. */
-        .vertical-box { aspect-ratio: 9 / 19; }
+        /* Horizontal videos - standard 16:9 */
+        .horizontal-box { 
+            aspect-ratio: 16 / 9; 
+            width: 100%;
+            height: auto;
+        }
 
-        /* Clean fill — no zoom, no offset. Player fits slot perfectly. */
+        /* Vertical videos - 9:16 content + UI space */
+        .vertical-box { 
+            aspect-ratio: 9 / 16;
+            width: 100%;
+            height: auto;
+        }
+
+        /* DRIVE VIDEO PLAYER - PERFECT FIT */
         .drive-video-player {
             position: absolute;
             top: 0;
@@ -126,6 +144,46 @@
             height: 100%;
             border: none;
             display: block;
+        }
+
+        /* Mobile optimization for vertical videos */
+        @media (max-width: 768px) {
+            .video-container {
+                width: 100% !important;
+            }
+
+            .horizontal-box {
+                aspect-ratio: 16 / 9;
+            }
+
+            /* Vertical videos - ensure perfect fit on mobile */
+            .vertical-box {
+                aspect-ratio: 9 / 16;
+            }
+
+            .drive-video-player {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vertical-box {
+                aspect-ratio: 9 / 16;
+            }
+
+            .drive-video-player {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
