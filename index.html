@@ -81,8 +81,8 @@
 
         @media (max-width: 1024px) {
             .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .portfolio-section { padding: 4rem 6%; }
         }
+
         @media (max-width: 768px) {
             .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
             .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -91,25 +91,14 @@
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
             
-            /* FIXED VERTICAL PLAYER CENTERING & STRETCHING */
+            /* FIXED: Black bars kalayan width 100% aakki, zoom remove cheythu */
             .vertical-box .drive-video-player {
-                position: absolute;
-                width: 140%; /* Zoom to hide UI buttons */
-                height: 105%; /* Slight vertical zoom */
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%); /* Perfect center on both axes */
-                border: none;
-                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                transform: none;
+                left: 0;
+                top: 0;
             }
-        }
-        @media (max-width: 480px) {
-            header { padding: 0.75rem 4%; }
-            nav a { margin-left: 0.6rem; font-size: 0.72rem; }
-            .section-title { font-size: 1.3rem; letter-spacing: 2px; }
-            .portfolio-section { padding: 2.5rem 3%; }
-            .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
         }
 
         .grid-item {
@@ -134,6 +123,7 @@
             height: 100%;
             border: none;
             display: block;
+            pointer-events: auto; /* FIXED: Timeline and settings click cheyyan ithu venam */
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
@@ -149,17 +139,7 @@
             border: 1px solid var(--glass-border); height: 400px; background: #111;
         }
         @media (max-width: 768px)  { .gallery-item { height: 260px; } }
-        @media (max-width: 480px)  { .gallery-item { height: 200px; } }
         .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
-
-        .visitor-counter {
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            padding: 12px 28px; margin: 0 auto 2rem; width: fit-content;
-            background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 50px;
-            color: var(--text-dim); font-size: 0.85rem; letter-spacing: 1px; backdrop-filter: blur(5px);
-        }
-        .visitor-counter i { color: var(--accent-color); font-size: 1rem; }
-        .visitor-counter .count { color: #fff; font-weight: 600; font-size: 1rem; }
 
         .contact-section { padding: 8rem 10%; text-align: center; }
         .btn { 
@@ -191,15 +171,14 @@
     <section class="profile-section">
         <img src="photo_2025-03-24_20-06-39.jpg" alt="Alan Martin" class="profile-photo animate-on-scroll">
         <h1 class="animate-on-scroll">Alan Martin</h1>
-        <p class="animate-on-scroll">Video Editor & Motion Graphics Artist</p>
+        <p class="animate-on-scroll">Video Editor</p>
 
         <div class="about-container animate-on-scroll">
-            <p>Visual Storyteller and Motion Designer specializing in cinematic experiences using After Effects and DaVinci Resolve.</p>
+            <p>Visual Storyteller specializing in cinematic experiences using Premiere Pro and DaVinci Resolve.</p>
         </div>
         <div class="skills-grid">
             <div class="skill-tag animate-on-scroll">After Effects</div>
             <div class="skill-tag animate-on-scroll">Premiere Pro</div>
-            <div class="skill-tag animate-on-scroll">Motion Graphics</div>
             <div class="skill-tag animate-on-scroll">Davinci Resolve</div>
         </div>
     </section>
@@ -221,119 +200,62 @@
     <section id="widescreen" class="portfolio-section" style="background: rgba(255,255,255,0.01);">
         <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe>
                 </div>
-                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
+                <div class="project-info"><h3>Project 1</h3></div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container horizontal-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe>
                 </div>
-                <div class="project-info"><h3>Motion Graphics</h3><p>LED Wall Content</p></div>
+                <div class="project-info"><h3>Project 2</h3></div>
             </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container horizontal-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <section id="reels" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Vertical Content</h2>
         <div class="reels-grid">
-
+            <!-- Iframe source links with preview?autoplay=0 keep UI elements functional -->
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1Qi4PwJ7kTrj4Ut5ISAn3P4JK9E7RUMio/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1FVP4V-R2h3hzfADqkZj_qtYv9tGrsm6V/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1cGn6Il_maiqNizy4bhEZY6k8B7yDsaYY/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1KQXXhRXknaWujnJDN4umwf_rLv2fou2y/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ajj8o6x5htgYJZVFW9eIimj3huWckQm7/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1j2ptwNe5-Exw49_MLbjqin45WNmeO5vc/preview" allowfullscreen></iframe>
                 </div>
             </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/11rfO_CS10JL_pzlKedCKPjhK2QOv313L/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/10yycqG5RgGI4eU4I30GUuYbjv60qN3_f/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1MQOI2LA8arKNL9VPJK7HpF1_2mbI05mS/preview" allowfullscreen></iframe>
-                </div>
-                <div class="project-info"><h3>AI Generated Videos</h3></div>
-            </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1p80n5LR5M0JatA07azH4hqaKxpDoIjHT/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-            
-           <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1H9QiwleOcI0i94JBXy8XjoWtMCQ9N-eH/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="grid-item animate-on-scroll">
-                <div class="video-container vertical-box">
-                    <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <div class="visitor-counter">
-        <i class="fas fa-eye"></i> <span id="visit-count" class="count">0</span> views
-    </div>
-
     <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
-        
         <div class="contact-container">
-            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll" onclick="contactMe(event, 'email')">
+            <a href="mailto:martinalan586@gmail.com" class="social-link animate-on-scroll">
                 <i class="fas fa-envelope"></i>
                 <span>Email</span>
             </a>
@@ -342,8 +264,7 @@
                 <span>Instagram</span>
             </a>
         </div>
-
-        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll" onclick="contactMe(event, 'email')">Hire Me</a>
+        <a href="mailto:martinalan586@gmail.com" class="btn animate-on-scroll">Hire Me</a>
     </section>
 
     <footer>
@@ -351,52 +272,6 @@
     </footer>
 
     <script>
-        function contactMe(e, type) {
-            if (type === 'email') {
-                const email = "martinalan586@gmail.com";
-                const subject = "Project Inquiry - Video Editing";
-                const body = "Hi Alan,\n\nI saw your portfolio and I'm interested in working with you on a project.";
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                if (!isMobile) {
-                    e.preventDefault();
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    window.open(gmailUrl, '_blank');
-                }
-            }
-        }
-
-        (function () {
-            const NAMESPACE = 'alanmartin-portfolio';
-            const KEY = 'views';
-
-            fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    var total = data.value;
-                    var el = document.getElementById('visit-count');
-                    if (!el) return;
-
-                    var start = Math.max(0, total - 60);
-                    var steps = 50;
-                    var delay = 20;
-                    var step = 0;
-
-                    var timer = setInterval(function () {
-                        step++;
-                        var current = Math.round(start + (total - start) * (step / steps));
-                        el.textContent = current.toLocaleString();
-                        if (step >= steps) {
-                            clearInterval(timer);
-                            el.textContent = total.toLocaleString();
-                        }
-                    }, delay);
-                })
-                .catch(function () {
-                    var el = document.getElementById('visit-count');
-                    if (el) el.textContent = '—';
-                });
-        })();
-
         document.addEventListener("DOMContentLoaded", function () {
             var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
