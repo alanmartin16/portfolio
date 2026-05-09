@@ -114,15 +114,22 @@
         .horizontal-box { aspect-ratio: 16 / 9; }
         .vertical-box   { aspect-ratio: 9 / 16; }
 
+        /* THE FIX FOR MOBILE VIEWBARS */
         .drive-video-player {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             width: 100%;
             height: 100%;
+            transform: translate(-50%, -50%);
             border: none;
             display: block;
-            object-fit: contain; /* Prevents stretching seen in Screenshot 2026-05-09 111946.jpg */
+        }
+
+        /* Specifically target vertical videos to fill the container and hide bars */
+        .vertical-box .drive-video-player {
+            width: 178%; /* Scales up to hide the black bars on the side of vertical drive links */
+            height: 105%; /* Slight vertical scale to hide UI trim */
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
