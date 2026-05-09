@@ -76,7 +76,7 @@
         .section-title { text-align: center; font-size: 1.8rem; margin-bottom: 3.5rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
 
         .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; align-items: start; }
+        .reels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
 
         @media (max-width: 1024px) {
             .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -84,18 +84,19 @@
 
         @media (max-width: 768px) {
             .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; } /* FIXED: Gap reduced for mobile */
+            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
             .portfolio-section { padding: 3rem 4%; }
             .profile-section h1 { font-size: 2.5rem; }
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
             
-            /* FIXED: Force full fit without side-shifting */
-            .vertical-box .drive-video-player {
+            /* FIXED: Force everything to stay inside the box */
+            .video-container { width: 100% !important; overflow: hidden; }
+            .drive-video-player {
                 width: 100% !important;
                 height: 100% !important;
-                top: 0 !important;
                 left: 0 !important;
+                top: 0 !important;
                 transform: none !important;
             }
         }
@@ -124,10 +125,6 @@
             display: block;
             pointer-events: auto;
         }
-
-        .project-info { padding: 1.5rem; flex-grow: 1; }
-        .project-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #fff; font-weight: 600; }
-        .project-info p  { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
 
         .gallery-wrapper {
             display: flex; overflow-x: auto; gap: 20px; padding-bottom: 25px;
@@ -169,22 +166,22 @@
     <section id="gallery" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Images</h2>
         <div class="gallery-wrapper animate-on-scroll">
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX" alt="Work 1"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr" alt="Work 2"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH" alt="Work 3"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8" alt="Work 4"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2" alt="Work 5"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w" alt="Work 6"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n" alt="Work 7"></div>
-            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa" alt="Work 8"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zzw4nc-1YRqTYo0eVXVHjfpbxNw8A0BX"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1TXu-X-RZFuXR9gAximddvpxB4DbwD0Hr"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1-5mSDJULU04Wl1NCANypG2XmzraOGHvH"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1IDls6GYqrAwHxB-KRibyUXW5EZhaeBF2"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n"></div>
+            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/u/0/d/1K_I-Kp79Sn6CkrJMvSpzDHJKLznH5lPa"></div>
         </div>
     </section>
 
     <section id="widescreen" class="portfolio-section">
         <h2 class="section-title animate-on-scroll">Horizontal Content</h2>
         <div class="portfolio-grid">
-            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe></div><div class="project-info"><h3>Motion Graphics</h3></div></div>
-            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe></div><div class="project-info"><h3>Motion Graphics</h3></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1zlH1Q76rzMLgVhLHWW185NxoQazGWMJE/preview" allowfullscreen></iframe></div></div>
+            <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1OVRZbh-JURDo2iyf_zvHIdl9wveqUKBn/preview" allowfullscreen></iframe></div></div>
             <div class="grid-item animate-on-scroll"><div class="video-container horizontal-box"><iframe class="drive-video-player" src="https://drive.google.com/file/d/1C8q1KDiVg7SYkLZTOlT_mvDGbh7UBBSn/preview" allowfullscreen></iframe></div></div>
         </div>
     </section>
