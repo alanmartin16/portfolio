@@ -125,14 +125,14 @@
             display: block;
         }
 
-        /* Google Drive's vertical player has internal UI chrome that
-           shifts the video frame left. Expand and re-center to compensate. */
+        /* Hide Google Drive's white top toolbar and bottom controls bar
+           by expanding height and offsetting. Nudge left to remove black strip. */
         .vertical-box .drive-video-player {
-            width: 130%;
-            height: 108%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 126%;
+            top: -8%;
+            left: -3%;
+            transform: none;
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
