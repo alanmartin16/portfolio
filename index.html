@@ -91,7 +91,7 @@
             nav a { margin-left: 0.9rem; font-size: 0.8rem; }
             .logo { font-size: 1.2rem; }
             
-            /* FIXED VERTICAL PLAYER CENTERING & STRETCHING */
+            /* VERTICAL PLAYER CENTERING & STRETCHING */
             .vertical-box .drive-video-player {
                 position: absolute;
                 width: 140%; /* Zoom to hide UI buttons */
@@ -151,15 +151,6 @@
         @media (max-width: 768px)  { .gallery-item { height: 260px; } }
         @media (max-width: 480px)  { .gallery-item { height: 200px; } }
         .gallery-item img { height: 100%; width: auto; display: block; object-fit: contain; }
-
-        .visitor-counter {
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            padding: 12px 28px; margin: 0 auto 2rem; width: fit-content;
-            background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 50px;
-            color: var(--text-dim); font-size: 0.85rem; letter-spacing: 1px; backdrop-filter: blur(5px);
-        }
-        .visitor-counter i { color: var(--accent-color); font-size: 1rem; }
-        .visitor-counter .count { color: #fff; font-weight: 600; font-size: 1rem; }
 
         .contact-section { padding: 8rem 10%; text-align: center; }
         .btn { 
@@ -310,7 +301,7 @@
                 </div>
             </div>
             
-           <div class="grid-item animate-on-scroll">
+            <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1H9QiwleOcI0i94JBXy8XjoWtMCQ9N-eH/preview" allowfullscreen></iframe>
                 </div>
@@ -320,19 +311,16 @@
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/1ogUfRwoxjgpHQolhTmvh6Vit4DqAxaPI/preview" allowfullscreen></iframe>
                 </div>
+            </div>
 
-                  <div class="grid-item animate-on-scroll">
+            <div class="grid-item animate-on-scroll">
                 <div class="video-container vertical-box">
                     <iframe class="drive-video-player" src="https://drive.google.com/file/d/11YujZv-d_sEajdSB5JAvhPyNQvkG5TRO/preview" allowfullscreen></iframe>
                 </div>
-                      
             </div>
+
         </div>
     </section>
-
-    <div class="visitor-counter">
-        <i class="fas fa-eye"></i> <span id="visit-count" class="count">0</span> views
-    </div>
 
     <section id="contact" class="contact-section">
         <h2 class="animate-on-scroll" style="letter-spacing: 2px;">READY TO START A PROJECT?</h2>
@@ -369,38 +357,6 @@
                 }
             }
         }
-
-        (function () {
-            const NAMESPACE = 'alanmartin-portfolio';
-            const KEY = 'views';
-
-            fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    var total = data.value;
-                    var el = document.getElementById('visit-count');
-                    if (!el) return;
-
-                    var start = Math.max(0, total - 60);
-                    var steps = 50;
-                    var delay = 20;
-                    var step = 0;
-
-                    var timer = setInterval(function () {
-                        step++;
-                        var current = Math.round(start + (total - start) * (step / steps));
-                        el.textContent = current.toLocaleString();
-                        if (step >= steps) {
-                            clearInterval(timer);
-                            el.textContent = total.toLocaleString();
-                        }
-                    }, delay);
-                })
-                .catch(function () {
-                    var el = document.getElementById('visit-count');
-                    if (el) el.textContent = '—';
-                });
-        })();
 
         document.addEventListener("DOMContentLoaded", function () {
             var observer = new IntersectionObserver(function (entries) {
