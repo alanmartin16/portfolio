@@ -83,24 +83,31 @@
             .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .portfolio-section { padding: 4rem 6%; }
         }
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
             .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
-            .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            
+            /* Change to 1 column on mobile so the Google Drive players have enough width to scale their UI properly */
+            .reels-grid { grid-template-columns: 1fr; gap: 20px; max-width: 400px; margin: 0 auto; }
+            
             .portfolio-section { padding: 3rem 4%; }
             .profile-section h1 { font-size: 2.5rem; }
-            nav a { margin-left: 0.9rem; font-size: 0.8rem; }
-            .logo { font-size: 1.2rem; }
             
-            /* VERTICAL PLAYER CENTERING & STRETCHING */
+            /* Clean up the squished header navigation menu */
+            header { flex-direction: column; gap: 10px; padding: 1rem; text-align: center; }
+            nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            nav a { margin-left: 0; font-size: 0.85rem; padding: 4px 8px; }
+            .logo { font-size: 1.4rem; }
+            
+            /* REMOVED THE BREAKING STRETCH HACK: Let the iframe fit naturally inside the 9:16 box */
             .vertical-box .drive-video-player {
                 position: absolute;
-                width: 140%; /* Zoom to hide UI buttons */
-                height: 105%; /* Slight vertical zoom */
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%); /* Perfect center on both axes */
+                width: 100%; 
+                height: 100%; 
+                top: 0;
+                left: 0;
+                transform: none; 
                 border: none;
-                object-fit: cover;
+                object-fit: contain;
             }
         }
         @media (max-width: 480px) {
