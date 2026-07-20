@@ -142,11 +142,19 @@
            makes Drive's own page reflow the video to fill the tall slot,
            instead of leaving black pillarboxing on the sides. */
         .vertical-box .drive-video-player {
-            width: 165%;
-            height: 118%;
-            top: -6%;
+            width: 148%;
+            height: 132%;
+            top: -9%;
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        /* Horizontal (16:9) videos still show Drive's thin title bar at
+           the very top of the iframe. A small vertical overscan biased
+           upward crops that strip out without visibly zooming the video. */
+        .horizontal-box .drive-video-player {
+            height: 110%;
+            top: -7%;
         }
 
         .project-info { padding: 1.5rem; flex-grow: 1; }
