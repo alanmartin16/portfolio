@@ -103,18 +103,18 @@
             }
         }
         
-        /* --- EXCLUSIVE MOBILE BREAKPOINT REEL TIMELINE & GRID CORRECTION --- */
+        /* --- MOBILE SCREEN RATIO FOR 2 COLUMNS, VIDEO FIT & TIMELINE FIX --- */
         @media (max-width: 480px) {
             header { padding: 0.75rem 4%; }
             nav a { margin-left: 0.6rem; font-size: 0.72rem; }
             .section-title { font-size: 1.3rem; letter-spacing: 2px; }
-            .portfolio-section { padding: 2.5rem 2%; }
+            .portfolio-section { padding: 2.5rem 3%; }
             .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
             
-            /* Maintained clean 3 columns in a row */
+            /* FIXED: Changes mobile view to exactly 2 videos per row automatically */
             .reels-grid { 
                 grid-template-columns: repeat(2, 1fr); 
-                gap: 8px; 
+                gap: 12px; 
             }
 
             /* Container context setup */
@@ -125,17 +125,12 @@
                 background: #000;
             }
 
-            /* 
-               CRITICAL MOBILE FIXED PROPERTIES:
-               Pushes the player layout canvas down slightly and stretches the height 
-               by 18% so Google's buggy external mobile control timeline falls entirely 
-               outside the visible container view.
-            */
+            /* FIXED: Perfectly aligns the video to fill the slot and strips timeline leak */
             .vertical-box .drive-video-player {
                 position: absolute;
                 width: 100%;
-                height: 118%; 
-                top: -3%; 
+                height: 114%; 
+                top: 0; 
                 left: 0;
                 border: none;
                 object-fit: cover;
