@@ -85,8 +85,6 @@
         }
         @media (max-width: 768px) {
             .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
-            
-            /* Locks grid to strict 3 column items with row generation */
             .reels-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
             .portfolio-section { padding: 3rem 4%; }
             .profile-section h1 { font-size: 2.5rem; }
@@ -97,16 +95,15 @@
             .vertical-box .drive-video-player {
                 position: absolute;
                 width: 100%;
-                height: 112%;
+                height: 100%;
                 top: 0;
                 left: 0;
-                transform: scale(1.02);
-                margin-bottom: -40px;
                 border: none;
+                object-fit: cover;
             }
         }
         
-        /* --- TARGETED MOBILE RATIO FOR 3 COLUMNS & TIMELINE CROP --- */
+        /* --- EXCLUSIVE MOBILE BREAKPOINT REEL TIMELINE & GRID CORRECTION --- */
         @media (max-width: 480px) {
             header { padding: 0.75rem 4%; }
             nav a { margin-left: 0.6rem; font-size: 0.72rem; }
@@ -114,28 +111,34 @@
             .portfolio-section { padding: 2.5rem 2%; }
             .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
             
-            /* FORCES EXACTLY 3 ITEMS IN A ROW AUTOMATICALLY ON NARROW SCREENS */
+            /* Maintained clean 3 columns in a row */
             .reels-grid { 
                 grid-template-columns: repeat(3, 1fr); 
-                gap: 6px; 
+                gap: 8px; 
             }
 
-            /* Container isolation to cleanly slice off timeline artifacts */
+            /* Container context setup */
             .vertical-box {
                 overflow: hidden !important;
-                border-radius: 6px;
+                position: relative;
+                border-radius: 8px;
+                background: #000;
             }
 
-            /* Completely trims the floating black extra timeline line under layout constraints */
+            /* 
+               CRITICAL MOBILE FIXED PROPERTIES:
+               Pushes the player layout canvas down slightly and stretches the height 
+               by 18% so Google's buggy external mobile control timeline falls entirely 
+               outside the visible container view.
+            */
             .vertical-box .drive-video-player {
                 position: absolute;
                 width: 100%;
-                height: 114%; 
-                top: 0;
+                height: 118%; 
+                top: -3%; 
                 left: 0;
-                transform: scale(1.04);
-                margin-bottom: -45px; 
                 border: none;
+                object-fit: cover;
             }
         }
 
@@ -144,7 +147,7 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex; flex-direction: column; border: 1px solid var(--glass-border); width: 100%;
         }
-        @media (max-width: 480px) { .grid-item { border-radius: 6px; } }
+        @media (max-width: 480px) { .grid-item { border-radius: 8px; } }
         
         .grid-item:hover { 
             transform: translateY(-8px); border-color: rgba(138, 153, 255, 0.5);
